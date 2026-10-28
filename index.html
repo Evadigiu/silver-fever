@@ -3,569 +3,1395 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Silver Fever · 30 ans</title>
-<meta name="description" content="Samedi 30 janvier 2027, 19h30, Expérience Park à Wittenheim. Soirée Silver Fever : une touche d'argent, des bulles et du son.">
-<meta property="og:title" content="Silver Fever · Thirty, flirty & silver">
-<meta property="og:description" content="Samedi 30 janvier 2027 à 19h30, Expérience Park, Wittenheim. Réponds au sondage et propose ton son.">
-<meta name="theme-color" content="#0b0d16">
+<title>Silver Fever · Héléana's 30th Birthday</title>
+<meta name="description" content="Héléana turns 30. Samedi 30 janvier 2027, 19 h, Bar Le Surnaturel, Mulhouse. Invitation privée.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#080808">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SILVER FEVER · Héléana turns 30">
+<meta property="og:description" content="Samedi 30.01.2027 · 19 h · Bar Le Surnaturel, Mulhouse. Ta réponse avant le 13 décembre.">
+<meta property="og:image" content="https://evadigiu.github.io/silver-fever/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080808'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' text-anchor='middle' fill='%23E8E8E8'%3ESF%3C/text%3E%3Ccircle cx='51' cy='14' r='5' fill='%23FF28D7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Big+Shoulders+Display:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
-/* Mise en page : une nuit bleu encre, une boule à facettes en ouverture,
-   puis une seule colonne de cartes « miroir » qui se lisent de haut en bas. */
+/* Mise en page : une affiche de club en défilement vertical.
+   Noir profond, chrome dominant, fuchsia néon en ponctuation.
+   Mobile d'abord : une colonne, cartes à glisser, gros boutons. */
 :root {
   color-scheme: dark;
-  --nuit: #0b0d16;        /* fond */
-  --nuit-2: #141827;      /* surfaces */
-  --nuit-3: #1d2236;      /* champs */
-  --argent: #d9dde6;      /* texte principal */
-  --argent-doux: #9aa1b4; /* texte secondaire */
-  --chrome-1: #ffffff;
-  --chrome-2: #b9bfcc;
-  --chrome-3: #6f7689;
-  --lavande: #b8b2ff;     /* seul accent, froid et nocturne */
-  --ok: #9fe2c0;
-  --erreur: #ffb4b4;
-  --filet: rgba(217, 221, 230, .14);
+  --noir: #080808;
+  --graphite: #141414;
+  --graphite-2: #1d1d1d;
+  --argent: #C0C0C0;
+  --chrome: #E8E8E8;
+  --acier: #777777;
+  --acier-lisible: #9a9a9a;   /* acier éclairci pour les petits textes */
+  --fuchsia: #FF28D7;
+  --blanc: #FFFFFF;
+  --filet: rgba(232, 232, 232, .13);
+  --ok: #8ff0c4;
+  --erreur: #ff9db5;
 
-  --f-titre: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
-  --f-texte: "Jost", "Futura", "Avenir Next", system-ui, sans-serif;
-  --f-chiffres: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --f-titre: "Archivo", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --f-texte: "Manrope", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-cond: "Big Shoulders Display", "Archivo Narrow", "Arial Narrow", sans-serif;
 
-  --chrome: linear-gradient(100deg, var(--chrome-3) 0%, var(--chrome-1) 22%, var(--chrome-2) 40%, var(--chrome-1) 58%, var(--chrome-3) 78%, var(--chrome-1) 100%);
+  --chrome-grad: linear-gradient(180deg, #ffffff 0%, #e8e8e8 28%, #9c9c9c 49%, #f6f6f6 51%, #c0c0c0 72%, #6e6e6e 100%);
+  --reflet: linear-gradient(105deg, transparent 0%, transparent 42%, rgba(255,255,255,.95) 50%, transparent 58%, transparent 100%);
+  --gouttiere: max(16px, env(safe-area-inset-left, 0px));
+  --gouttiere-d: max(16px, env(safe-area-inset-right, 0px));
+  --nav-h: 64px;
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px)); }
 body {
   margin: 0;
-  background: var(--nuit);
-  color: var(--argent);
+  background: var(--noir);
+  color: var(--chrome);
   font-family: var(--f-texte);
   font-size: 1.0625rem;
-  line-height: 1.65;
-  font-weight: 300;
+  line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
-img, canvas { max-width: 100%; }
+img, svg, canvas { max-width: 100%; }
 [hidden] { display: none !important; }
+a { color: inherit; }
+button { font: inherit; }
+::selection { background: var(--fuchsia); color: var(--blanc); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 2px solid var(--fuchsia); outline-offset: 3px; }
 
-/* Reflets de la boule qui tournent lentement sur tout le fond */
-#reflets {
-  position: fixed;
-  inset: -50vmax;
-  pointer-events: none;
-  z-index: 0;
-  animation: tourne 140s linear infinite;
-}
-#reflets span {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,.9) 0%, rgba(214,220,255,.35) 35%, transparent 70%);
-  filter: blur(.4px);
-}
-@keyframes tourne { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { #reflets { animation: none; } }
-
-.page {
-  position: relative;
-  z-index: 1;
-  max-width: 44rem;
+.wrap {
+  width: 100%;
+  max-width: 72rem;
   margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 0 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
+  padding-left: var(--gouttiere);
+  padding-right: var(--gouttiere-d);
 }
 
-/* ---------- Ouverture ---------- */
-.ouverture {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.1rem;
-  padding-top: max(1.5rem, env(safe-area-inset-top, 0px));
+/* ---------- Typo ---------- */
+.chrome-txt {
+  background-image: var(--reflet), var(--chrome-grad);
+  background-size: 260% 100%, 100% 100%;
+  background-position: 160% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-.boule-wrap { position: relative; width: min(15rem, 62vw); aspect-ratio: 1 / 1.25; }
-#boule { width: 100%; height: 100%; display: block; }
-.surtitre {
-  font-family: var(--f-chiffres);
-  font-size: .78rem;
-  letter-spacing: .28em;
+.cond {
+  font-family: var(--f-cond);
   text-transform: uppercase;
-  color: var(--argent-doux);
+  letter-spacing: .06em;
+}
+.eyebrow {
+  font-family: var(--f-cond);
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--argent);
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
   margin: 0;
 }
-h1 {
+.eyebrow::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--fuchsia); box-shadow: 0 0 12px var(--fuchsia); }
+h2.titre {
   font-family: var(--f-titre);
-  font-weight: 500;
-  font-style: italic;
-  font-size: clamp(3.4rem, 15vw, 6.8rem);
-  line-height: .92;
+  font-stretch: 125%;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(2.3rem, 10.5vw, 5.4rem);
+  line-height: .9;
   letter-spacing: -.02em;
   margin: 0;
   text-wrap: balance;
 }
-.chrome {
-  background: var(--chrome);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: lustre 9s ease-in-out infinite alternate;
-}
-@keyframes lustre { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
-@media (prefers-reduced-motion: reduce) { .chrome { animation: none; } }
-h1 .petit { display: block; font-size: .32em; font-style: normal; letter-spacing: .02em; margin-top: .5em; font-weight: 400; }
+p { margin: 0; }
 
-.quand {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .25rem 1rem;
-  font-size: 1.05rem;
-  font-weight: 400;
-  margin: 0;
-}
-.quand span + span::before { content: "·"; margin-right: 1rem; color: var(--chrome-3); }
-@media (max-width: 30rem) {
-  .quand { flex-direction: column; align-items: center; }
-  .quand span + span::before { content: none; }
-}
-
-.compte {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 4.6rem));
-  gap: .5rem;
-  justify-content: center;
-  margin-top: .4rem;
-}
-.compte div {
-  display: flex; flex-direction: column; align-items: center;
-  padding: .55rem 0 .45rem;
-  border: 1px solid var(--filet);
-  border-radius: 4px;
-  background: rgba(20, 24, 39, .6);
-}
-.compte b {
-  font-family: var(--f-chiffres);
-  font-weight: 500;
-  font-size: 1.5rem;
-  line-height: 1.1;
-  font-variant-numeric: tabular-nums;
-  color: var(--chrome-1);
-}
-.compte small { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--argent-doux); }
-
-.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: .6rem; }
-
+/* ---------- Boutons ---------- */
 .btn {
   appearance: none;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  padding: .8rem 1.5rem;
-  font: 500 .95rem/1 var(--f-texte);
-  letter-spacing: .04em;
-  cursor: pointer;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: .6rem;
+  min-height: 52px;
+  padding: .9rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--f-cond);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .25s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--reflet);
+  background-size: 250% 100%;
+  background-position: 160% 0;
+  opacity: .55;
+  transition: background-position .7s ease;
+  pointer-events: none;
+}
+.btn:hover::after { background-position: -60% 0; }
+.btn-chrome { background: var(--chrome-grad); color: #0b0b0b; }
+.btn-chrome:hover { box-shadow: 0 0 28px rgba(232, 232, 232, .35); transform: translateY(-1px); }
+.btn-fuchsia { background: var(--fuchsia); color: var(--blanc); box-shadow: 0 0 0 rgba(255, 40, 215, 0); }
+.btn-fuchsia:hover { box-shadow: 0 0 30px rgba(255, 40, 215, .55); transform: translateY(-1px); }
+.btn-trait { background: transparent; color: var(--chrome); border-color: rgba(232, 232, 232, .45); }
+.btn-trait:hover { border-color: var(--chrome); background: rgba(232, 232, 232, .06); }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn .fleche { font-family: var(--f-texte); font-weight: 700; letter-spacing: 0; }
+
+/* ---------- Navigation ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 60;
+  background: var(--noir);
+}
+.nav {
+  position: fixed;
+  top: env(safe-area-inset-top, 0px);
+  left: 0; right: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  transition: background-color .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolle { background: rgba(8, 8, 8, .82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom-color: var(--filet); }
+.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.logo {
+  font-family: var(--f-titre);
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: .35rem;
+}
+.logo b { color: var(--fuchsia); font-family: var(--f-cond); font-size: 1.1rem; letter-spacing: .04em; }
+.nav-liens { display: none; gap: 1.6rem; align-items: center; }
+.nav-liens a {
+  font-family: var(--f-cond);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--argent);
+  transition: color .2s ease;
+}
+.nav-liens a:hover { color: var(--blanc); }
+.nav-droite { display: flex; align-items: center; gap: .5rem; }
+.nav .btn { min-height: 42px; padding: .5rem 1.1rem; font-size: 1rem; }
+.burger {
+  width: 48px; height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid var(--filet); border-radius: 50%;
+  color: var(--chrome); cursor: pointer;
+}
+.burger span, .burger span::before, .burger span::after {
+  display: block; width: 18px; height: 1.5px; background: currentColor; position: relative; transition: transform .25s ease, opacity .2s ease;
+}
+.burger span::before, .burger span::after { content: ""; position: absolute; left: 0; }
+.burger span::before { top: -6px; }
+.burger span::after { top: 6px; }
+.burger[aria-expanded="true"] span { background: transparent; }
+.burger[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+.burger[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: rgba(8, 8, 8, .97);
+  padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 1.5rem) var(--gouttiere-d) calc(2rem + env(safe-area-inset-bottom, 0px)) var(--gouttiere);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s;
+}
+.menu.ouvert { opacity: 1; visibility: visible; }
+.menu ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+.menu a {
+  font-family: var(--f-titre);
+  font-stretch: 125%;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.7rem, 8vw, 2.6rem);
+  line-height: 1.15;
+  text-decoration: none;
+  display: block;
+  padding: .25rem 0;
+}
+.menu a:hover, .menu a:focus-visible { color: var(--fuchsia); }
+.menu .pied-menu { font-family: var(--f-cond); letter-spacing: .18em; text-transform: uppercase; color: var(--acier-lisible); font-weight: 700; }
+
+@media (min-width: 64rem) {
+  .nav-liens { display: flex; }
+  .burger { display: none; }
+  .menu { display: none; }
+}
+
+/* ---------- Accueil ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 1rem);
+  padding-bottom: 2.5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+.faisceaux {
+  position: absolute;
+  inset: -20% -40% auto;
+  height: 120%;
+  z-index: -2;
+  background:
+    conic-gradient(from 180deg at 50% 0%, transparent 0deg, rgba(232,232,232,.07) 8deg, transparent 18deg, transparent 32deg, rgba(232,232,232,.05) 40deg, transparent 50deg, transparent 310deg, rgba(232,232,232,.06) 320deg, transparent 330deg, transparent 342deg, rgba(255,40,215,.07) 349deg, transparent 356deg);
+  transform-origin: 50% 0;
+  animation: balayage 14s ease-in-out infinite alternate;
+}
+@keyframes balayage { from { transform: rotate(-7deg); } to { transform: rotate(7deg); } }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 40%;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent, var(--noir));
+  pointer-events: none;
+}
+#boule {
+  position: absolute;
+  top: calc(var(--nav-h) * .2);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(78vw, 30rem);
+  height: auto;
+  aspect-ratio: 1 / 1.15;
+  z-index: -1;
+  opacity: .5;
+  pointer-events: none;
+}
+.hero .wrap { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.1rem; }
+.affiche-haut {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--f-cond);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--acier-lisible);
+}
+.turns {
+  font-family: var(--f-cond);
+  font-weight: 800;
+  font-size: clamp(1.15rem, 5vw, 1.6rem);
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--fuchsia);
+  text-shadow: 0 0 18px rgba(255, 40, 215, .55);
+  margin: 0;
+  padding-left: .3em;
+}
+h1.silver {
+  margin: 0;
+  font-family: var(--f-titre);
+  font-stretch: 125%;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: .82;
+  letter-spacing: -.035em;
+  font-size: clamp(3.3rem, 18.5vw, 12.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1.silver span { display: block; }
+.date-hero {
+  font-family: var(--f-cond);
+  font-weight: 800;
+  font-size: clamp(1.1rem, 6.2vw, 3rem);
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: .08em;
+  line-height: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .2rem .7rem;
+  color: var(--chrome);
+}
+.date-hero .sep { color: var(--fuchsia); }
+
+.compte {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: .5rem;
-  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+  width: 100%;
+  max-width: 30rem;
+  margin-top: .4rem;
 }
-.btn-plein { background: var(--chrome); background-size: 200% 100%; color: #10131f; box-shadow: 0 0 0 0 rgba(255,255,255,0); }
-.btn-plein:hover { box-shadow: 0 0 24px rgba(220, 225, 255, .35); transform: translateY(-1px); }
-.btn-trait { border-color: var(--chrome-2); color: var(--argent); background: transparent; }
-.btn-trait:hover { background: rgba(217, 221, 230, .08); }
-.btn:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, .choix input:focus-visible + span {
-  outline: 2px solid var(--lavande);
-  outline-offset: 3px;
+.compte .case {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .7rem 0 .55rem;
+  border: 1px solid var(--filet);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(29,29,29,.85), rgba(14,14,14,.85));
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
-.btn[disabled] { opacity: .55; cursor: wait; transform: none; }
+.compte b {
+  font-family: var(--f-cond);
+  font-weight: 800;
+  font-size: clamp(2rem, 9vw, 3rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.compte small {
+  font-family: var(--f-cond);
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--fuchsia);
+  margin-top: .3rem;
+}
+.compte-fini {
+  font-family: var(--f-titre);
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 6vw, 2.2rem);
+  text-transform: uppercase;
+  margin: .4rem 0 0;
+}
+.hero .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: .6rem; }
+.defiler {
+  margin-top: 1.4rem;
+  font-family: var(--f-cond);
+  font-weight: 700;
+  letter-spacing: .3em;
+  font-size: .8rem;
+  color: var(--acier-lisible);
+  text-transform: uppercase;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+}
+.defiler::after { content: ""; width: 1px; height: 2.4rem; background: linear-gradient(var(--chrome), transparent); animation: goutte 2.2s ease-in-out infinite; transform-origin: top; }
+@keyframes goutte { 0% { transform: scaleY(0); opacity: 1; } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* Séquence d'ouverture (seulement si JS actif et animations autorisées) */
+.flash {
+  position: fixed; inset: 0; z-index: 70; pointer-events: none;
+  background: radial-gradient(circle at 50% 42%, #fff 0%, rgba(255,255,255,.6) 35%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .entree { opacity: 0; transform: translateY(18px); filter: blur(8px); animation: entree .8s cubic-bezier(.2,.8,.2,1) forwards; }
+  .js .entree.e1 { animation-delay: .1s; }
+  .js .entree.e2 { animation-delay: .25s; }
+  .js .entree.e3 { animation-delay: .4s; }
+  .js .entree.e4 { animation-delay: .95s; }
+  .js .entree.e5 { animation-delay: 1.1s; }
+  .js .entree.e6 { animation-delay: 1.25s; }
+  .js .flash { animation: flash .55s ease-out .78s 1; }
+  .js h1.silver .chrome-txt { animation: lustre 1.4s ease .7s 1 both, lustre 2.2s ease 6s infinite; }
+}
+@keyframes entree { to { opacity: 1; transform: none; filter: none; } }
+@keyframes flash { 0% { opacity: 0; } 18% { opacity: .38; } 100% { opacity: 0; } }
+@keyframes lustre { 0% { background-position: 160% 0, 0 0; } 60%, 100% { background-position: -60% 0, 0 0; } }
 
 /* ---------- Sections ---------- */
-section { display: flex; flex-direction: column; gap: 1rem; scroll-margin-top: 1.5rem; }
-h2 {
+section.bloc { padding-block: 5.5rem 1rem; position: relative; overflow-x: clip; }
+section.bloc > .wrap { display: flex; flex-direction: column; gap: 1.6rem; }
+.entete { display: flex; flex-direction: column; gap: .9rem; }
+.chapo { color: var(--argent); max-width: 36rem; font-size: 1.05rem; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+  .js .reveal.vu { opacity: 1; transform: none; }
+}
+
+/* Invitation */
+.invitation .accroche {
   font-family: var(--f-titre);
-  font-weight: 500;
-  font-size: clamp(1.9rem, 6vw, 2.5rem);
-  line-height: 1.1;
+  font-stretch: 112%;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 8.6vw, 4.6rem);
+  line-height: .98;
+  letter-spacing: -.02em;
   margin: 0;
   text-wrap: balance;
 }
-.etiquette {
-  font-family: var(--f-chiffres);
-  font-size: .72rem;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: var(--lavande);
-  margin: 0;
-}
-p { margin: 0; }
-.texte { display: flex; flex-direction: column; gap: 1rem; max-width: 36rem; }
-.texte strong { font-weight: 500; color: var(--chrome-1); }
-.signature { font-family: var(--f-titre); font-style: italic; font-size: 1.4rem; color: var(--chrome-1); }
-
-/* Infos pratiques : liste étiquette / valeur */
-.infos {
+.invitation .corps {
   display: grid;
-  grid-template-columns: 7.5rem minmax(0, 1fr);
-  border-top: 1px solid var(--filet);
-  margin: 0;
-}
-.infos dt, .infos dd { padding: .9rem 0; border-bottom: 1px solid var(--filet); margin: 0; }
-.infos dt { font-family: var(--f-chiffres); font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--argent-doux); padding-top: 1.05rem; }
-.infos dd { font-weight: 400; }
-.infos a { color: var(--argent); text-decoration-color: var(--chrome-3); text-underline-offset: 3px; }
-.infos a:hover { text-decoration-color: var(--chrome-1); }
-.infos .mini { display: block; font-size: .9rem; color: var(--argent-doux); font-weight: 300; }
-.liens-cal { display: flex; flex-wrap: wrap; gap: .4rem 1rem; }
-.lien-bouton { background: none; border: 0; padding: 0; font: inherit; color: var(--argent); text-decoration: underline; text-decoration-color: var(--chrome-3); text-underline-offset: 3px; cursor: pointer; }
-.lien-bouton:hover { text-decoration-color: var(--chrome-1); }
-@media (max-width: 30rem) {
-  .infos { grid-template-columns: minmax(0, 1fr); }
-  .infos dt { border-bottom: 0; padding-bottom: 0; }
-  .infos dd { padding-top: .25rem; }
-}
-
-/* Bandeau « sans gosses » : la seule pièce posée de travers */
-.sans-gosses {
-  position: relative;
-  border: 1px dashed var(--chrome-2);
-  border-radius: 6px;
-  padding: 1.4rem 1.4rem 1.3rem;
-  transform: rotate(-1.2deg);
-  background: rgba(184, 178, 255, .06);
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-}
-.sans-gosses h2 { font-size: clamp(1.6rem, 5.5vw, 2.1rem); }
-.tampon {
-  position: absolute;
-  top: -.9rem;
-  right: 1rem;
-  font-family: var(--f-chiffres);
-  font-size: .7rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  background: var(--lavande);
-  color: #14122b;
-  padding: .3rem .6rem;
-  border-radius: 3px;
-  transform: rotate(3deg);
-}
-
-/* ---------- Formulaires ---------- */
-.carte {
-  background: linear-gradient(160deg, rgba(29, 34, 54, .92), rgba(20, 24, 39, .92));
-  border: 1px solid var(--filet);
-  border-radius: 10px;
-  padding: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-form { display: flex; flex-direction: column; gap: 1.1rem; }
-.champ { display: flex; flex-direction: column; gap: .35rem; min-width: 0; }
-.champ label, .legende { font-size: .85rem; font-weight: 500; letter-spacing: .04em; color: var(--argent-doux); }
-.facultatif { font-weight: 300; }
-input[type="text"], textarea, select {
-  width: 100%;
-  font: 400 1rem/1.4 var(--f-texte);
+  gap: 1.3rem;
+  max-width: 40rem;
+  font-size: clamp(1.1rem, 4.3vw, 1.3rem);
+  line-height: 1.55;
   color: var(--argent);
-  background: var(--nuit-3);
-  border: 1px solid var(--filet);
-  border-radius: 6px;
-  padding: .75rem .85rem;
 }
-textarea { resize: vertical; min-height: 4.5rem; }
-input::placeholder, textarea::placeholder { color: #6c7286; }
-.deux { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
-@media (max-width: 30rem) { .deux { grid-template-columns: minmax(0, 1fr); } }
+.invitation .corps strong { color: var(--blanc); font-weight: 600; }
+.invitation .rdv {
+  font-family: var(--f-cond);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: clamp(1.6rem, 6.6vw, 2.6rem);
+  line-height: 1.05;
+  color: var(--chrome);
+}
+.invitation .rdv em { font-style: normal; color: var(--fuchsia); text-shadow: 0 0 16px rgba(255,40,215,.45); }
+.invitation .dress {
+  border-left: 2px solid var(--fuchsia);
+  padding-left: 1rem;
+  color: var(--chrome);
+  font-weight: 500;
+}
+@media (min-width: 56rem) {
+  .invitation .grille { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 4rem; align-items: start; }
+}
+.invitation .grille { display: grid; gap: 2rem; }
 
-fieldset { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
-.choix-ligne { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+/* Infos pratiques */
+.cartes-infos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+}
+.carte-info {
+  position: relative;
+  background: linear-gradient(180deg, var(--graphite-2), var(--graphite));
+  border: 1px solid var(--filet);
+  border-radius: 18px;
+  padding: 1.1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  min-width: 0;
+  overflow: hidden;
+}
+.carte-info::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
+}
+.carte-info:not(.demi) { grid-column: 1 / -1; }
+.carte-info .lab {
+  font-family: var(--f-cond);
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--fuchsia);
+}
+.carte-info .val {
+  font-family: var(--f-titre);
+  font-stretch: 110%;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.15rem, 4.8vw, 1.5rem);
+  line-height: 1.12;
+  letter-spacing: -.005em;
+  overflow-wrap: anywhere;
+}
+.carte-info .val.grand { font-family: var(--f-cond); font-weight: 800; font-size: clamp(2rem, 9vw, 2.8rem); letter-spacing: .03em; line-height: 1; }
+.carte-info .txt { color: var(--argent); font-size: 1rem; }
+.carte-info.enfants { background: linear-gradient(135deg, rgba(255,40,215,.13), rgba(20,20,20,.9) 55%); border-color: rgba(255,40,215,.35); }
+.carte-info.enfants .val { font-size: clamp(1.25rem, 5.2vw, 1.7rem); }
+.boutons-infos { display: flex; flex-wrap: wrap; gap: .7rem; }
+.boutons-infos .btn { flex: 1 1 15rem; }
+.cal-choix { display: flex; flex-wrap: wrap; gap: .6rem; width: 100%; }
+.cal-choix .btn { flex: 1 1 12rem; min-height: 48px; font-size: 1rem; }
+@media (min-width: 48rem) {
+  .cartes-infos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .carte-info { padding: 1.5rem; }
+  .carte-info:not(.demi) { grid-column: auto; }
+  .carte-info.large { grid-column: span 3; }
+  .carte-info.moyen { grid-column: span 2; }
+}
+
+/* Programme */
+.programme-defile {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 82%;
+  gap: .9rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  margin-left: calc(var(--gouttiere) * -1);
+  margin-right: calc(var(--gouttiere-d) * -1);
+  padding-left: var(--gouttiere);
+  padding-right: var(--gouttiere-d);
+  scroll-padding-left: var(--gouttiere);
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.programme-defile::-webkit-scrollbar { display: none; }
+.carte-prog {
+  scroll-snap-align: start;
+  background: var(--graphite);
+  border: 1px solid var(--filet);
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .35s ease;
+  min-width: 0;
+}
+.carte-prog:hover { transform: translateY(-6px); border-color: rgba(232,232,232,.35); box-shadow: 0 18px 50px rgba(0,0,0,.6), 0 0 40px rgba(255,40,215,.12); }
+.carte-prog .art {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+  background:
+    radial-gradient(ellipse at 50% 110%, rgba(255,40,215,.22), transparent 60%),
+    radial-gradient(ellipse at 50% 0%, rgba(232,232,232,.12), transparent 65%),
+    #0c0c0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.carte-prog .art svg { width: 62%; height: auto; }
+.carte-prog .art .num {
+  position: absolute; top: .9rem; left: 1rem;
+  font-family: var(--f-cond); font-weight: 800; font-size: 1rem; letter-spacing: .2em; color: var(--acier-lisible);
+}
+.carte-prog .art::after {
+  content: ""; position: absolute; inset: 0;
+  background: var(--reflet); background-size: 250% 100%; background-position: 160% 0;
+  opacity: .12; transition: background-position .9s ease;
+}
+.carte-prog:hover .art::after { background-position: -60% 0; }
+.carte-prog .corps { padding: 1.2rem 1.2rem 1.4rem; display: flex; flex-direction: column; gap: .5rem; }
+.carte-prog h3 {
+  margin: 0;
+  font-family: var(--f-titre);
+  font-stretch: 118%;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.35rem, 5.6vw, 1.65rem);
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.carte-prog h3 .heure { color: var(--fuchsia); }
+.carte-prog p { color: var(--argent); font-size: 1rem; }
+.glisser {
+  font-family: var(--f-cond); font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--acier-lisible); font-size: .85rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.points { display: flex; gap: .4rem; }
+.points span { width: 22px; height: 3px; border-radius: 2px; background: var(--filet); transition: background-color .3s ease; }
+.points span.actif { background: var(--fuchsia); }
+.note-prog { color: var(--acier-lisible); font-size: .95rem; }
+@media (min-width: 56rem) {
+  .programme-defile { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-columns: auto; overflow: visible; margin: 0; padding: 0; }
+  .glisser { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .eq rect { animation: eq 1.1s ease-in-out infinite alternate; transform-origin: 50% 100%; transform-box: fill-box; }
+  .eq rect:nth-child(2) { animation-delay: -.3s; }
+  .eq rect:nth-child(3) { animation-delay: -.6s; }
+  .eq rect:nth-child(4) { animation-delay: -.15s; }
+  .eq rect:nth-child(5) { animation-delay: -.45s; }
+  .eq rect:nth-child(6) { animation-delay: -.8s; }
+  .eq rect:nth-child(7) { animation-delay: -.2s; }
+  .scintille { animation: scintille 2.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  .scintille.s2 { animation-delay: -1.2s; }
+}
+@keyframes eq { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
+@keyframes scintille { 0%, 100% { opacity: .2; transform: scale(.6); } 50% { opacity: 1; transform: scale(1); } }
+
+/* RSVP */
+.rsvp .titre { color: var(--blanc); }
+.rsvp .titre .fx { color: var(--fuchsia); text-shadow: 0 0 30px rgba(255,40,215,.5); }
+.delai {
+  font-family: var(--f-cond); font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+  font-size: clamp(1.15rem, 4.8vw, 1.5rem); color: var(--chrome);
+}
+.delai b { color: var(--fuchsia); }
+.duo, section.bloc > .wrap.duo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+@media (min-width: 60rem) {
+  .duo, section.bloc > .wrap.duo { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 4rem; }
+  .duo > .entete { position: sticky; top: calc(var(--nav-h) + 2rem); }
+}
+.panneau {
+  background: linear-gradient(180deg, var(--graphite-2), var(--graphite));
+  border: 1px solid var(--filet);
+  border-radius: 24px;
+  padding: 1.3rem;
+  max-width: 44rem;
+  width: 100%;
+}
+@media (min-width: 48rem) { .panneau { padding: 2.2rem; } }
+form { display: flex; flex-direction: column; gap: 1.25rem; }
+.deux { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+@media (min-width: 34rem) { .deux { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.champ { display: flex; flex-direction: column; gap: .45rem; min-width: 0; }
+.champ label, .legende {
+  font-family: var(--f-cond); font-weight: 700; font-size: 1rem; letter-spacing: .14em; text-transform: uppercase; color: var(--argent);
+}
+.champ label .fac, .legende .fac { color: var(--acier-lisible); font-weight: 600; letter-spacing: .08em; text-transform: none; font-family: var(--f-texte); font-size: .85rem; }
+.champ .aide { font-size: .88rem; color: var(--acier-lisible); }
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  min-height: 52px;
+  font: 500 1rem/1.4 var(--f-texte);  /* 16px minimum : pas de zoom auto sur iPhone */
+  color: var(--blanc);
+  background: #0e0e0e;
+  border: 1px solid rgba(232,232,232,.18);
+  border-radius: 14px;
+  padding: .85rem 1rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+textarea { resize: vertical; min-height: 6rem; }
+input::placeholder, textarea::placeholder { color: #666; }
+input:focus, textarea:focus { outline: none; border-color: var(--chrome); box-shadow: 0 0 0 3px rgba(255,40,215,.35); }
+input[aria-invalid="true"] { border-color: var(--erreur); }
+fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.choix-venue { display: grid; grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+@media (min-width: 34rem) { .choix-venue { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 .choix { position: relative; display: block; cursor: pointer; }
 .choix input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
 .choix span {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: .1rem;
-  border: 1px solid var(--filet);
-  border-radius: 8px;
-  padding: .85rem .5rem;
-  background: var(--nuit-3);
-  text-align: center;
-  transition: border-color .15s ease, background-color .15s ease, box-shadow .2s ease;
+  display: flex; align-items: center; gap: .9rem;
+  min-height: 64px;
+  padding: .9rem 1.1rem;
+  border: 1px solid rgba(232,232,232,.18);
+  border-radius: 16px;
+  background: #0e0e0e;
+  font-weight: 600;
+  line-height: 1.3;
+  transition: border-color .2s ease, background-color .2s ease, box-shadow .25s ease;
 }
-.choix b { font-family: var(--f-titre); font-style: italic; font-weight: 500; font-size: 1.5rem; line-height: 1.1; }
-.choix small { font-size: .82rem; color: var(--argent-doux); }
-.choix input:checked + span { border-color: var(--chrome-1); background: rgba(217, 221, 230, .1); box-shadow: 0 0 18px rgba(220, 225, 255, .18); }
-.choix:hover span { border-color: var(--chrome-2); }
-
-.message { font-size: .95rem; padding: .7rem .9rem; border-radius: 6px; }
-.message.ok { color: var(--ok); background: rgba(159, 226, 192, .08); border: 1px solid rgba(159, 226, 192, .3); }
-.message.erreur { color: var(--erreur); background: rgba(255, 180, 180, .07); border: 1px solid rgba(255, 180, 180, .3); }
-.echeance { font-size: .95rem; color: var(--argent-doux); }
-.echeance b { font-weight: 500; color: var(--chrome-1); }
+.choix span::before {
+  content: ""; flex: none; width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--acier); transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.choix:hover span { border-color: rgba(232,232,232,.4); }
+.choix input:checked + span { border-color: var(--fuchsia); background: rgba(255,40,215,.08); box-shadow: 0 0 24px rgba(255,40,215,.18); }
+.choix input:checked + span::before { border-color: var(--fuchsia); background: radial-gradient(circle, var(--fuchsia) 45%, transparent 50%); box-shadow: 0 0 10px var(--fuchsia); }
+.choix input:focus-visible + span { outline: 2px solid var(--fuchsia); outline-offset: 3px; }
+.case-a-cocher { display: flex; gap: .8rem; align-items: flex-start; cursor: pointer; font-size: .98rem; color: var(--argent); }
+.case-a-cocher input { width: 22px; height: 22px; flex: none; margin: .1rem 0 0; accent-color: var(--fuchsia); }
+.conditionnel { display: flex; flex-direction: column; gap: 1.25rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .conditionnel:not([hidden]) { animation: deplie .4s ease; }
+}
+@keyframes deplie { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .piege { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.mes-sons { display: flex; flex-direction: column; gap: .6rem; }
-
-.deja { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1rem; }
-
-/* ---------- Playlist ---------- */
-.playlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--filet); }
-.playlist li {
-  display: grid;
-  grid-template-columns: 2.2rem minmax(0, 1fr);
-  gap: .2rem .75rem;
-  align-items: baseline;
-  padding: .8rem 0;
-  border-bottom: 1px solid var(--filet);
+.message { padding: .85rem 1rem; border-radius: 14px; font-size: .98rem; font-weight: 500; }
+.message.erreur { color: var(--erreur); background: rgba(255,157,181,.08); border: 1px solid rgba(255,157,181,.35); }
+.message.info { color: var(--argent); background: rgba(232,232,232,.05); border: 1px solid var(--filet); }
+.btn .roue { width: 18px; height: 18px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: tourne .8s linear infinite; }
+@keyframes tourne { to { transform: rotate(360deg); } }
+.merci { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+.merci .gros {
+  font-family: var(--f-titre); font-stretch: 120%; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.8rem, 8vw, 3.2rem); line-height: .98; letter-spacing: -.02em; margin: 0;
 }
-.playlist .n { font-family: var(--f-chiffres); font-size: .8rem; color: var(--chrome-3); font-variant-numeric: tabular-nums; }
-.playlist .titre { font-weight: 500; color: var(--chrome-1); overflow-wrap: anywhere; }
-.playlist .par { grid-column: 2; font-size: .82rem; color: var(--argent-doux); }
-.vide { color: var(--argent-doux); font-style: italic; }
-.playlist .artiste { color: var(--argent); }
+.merci .gros.oui { color: var(--blanc); }
+.merci .gros.oui .fx { color: var(--fuchsia); text-shadow: 0 0 24px rgba(255,40,215,.5); }
+.merci p { color: var(--argent); }
 
+/* Playlist */
+.playlist .grille { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.2rem; align-items: center; }
+@media (min-width: 56rem) { .playlist .grille { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 4rem; } }
+.platine { position: relative; width: min(68vw, 26rem); max-width: 100%; aspect-ratio: 1; margin: 0 auto; order: 2; }
+@media (min-width: 56rem) { .platine { order: 0; width: min(100%, 26rem); } }
+.vinyle {
+  position: absolute; inset: 4%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--fuchsia) 0 15%, #0b0b0b 15.5% 17%, transparent 17.5%),
+    repeating-radial-gradient(circle, #121212 0 1px, #1b1b1b 1.5px 3px),
+    #111;
+  box-shadow: 0 30px 60px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.vinyle::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 20deg, transparent 0deg, rgba(255,255,255,.22) 25deg, transparent 55deg, transparent 180deg, rgba(255,255,255,.16) 205deg, transparent 235deg);
+}
+.vinyle::after {
+  content: "SF · 30"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-cond); font-weight: 800; letter-spacing: .12em; color: var(--blanc); font-size: clamp(.9rem, 3.4vw, 1.2rem);
+}
+.disque-tourne { position: absolute; inset: 0; border-radius: 50%; }
+@media (prefers-reduced-motion: no-preference) { .disque-tourne { animation: tourne 7s linear infinite; } }
+.bras {
+  position: absolute; top: 2%; right: 4%; width: 34%; height: 58%;
+  border-right: 4px solid; border-image: var(--chrome-grad) 1;
+  transform-origin: 100% 0; transform: rotate(24deg);
+  border-radius: 0 0 10px 0;
+}
+.bras::before { content: ""; position: absolute; top: -12px; right: -14px; width: 24px; height: 24px; border-radius: 50%; background: var(--chrome-grad); }
+.bras::after { content: ""; position: absolute; bottom: -6px; right: -10px; width: 16px; height: 26px; border-radius: 4px; background: var(--chrome-grad); transform: rotate(-24deg); }
+.playlist .texte-pl { display: flex; flex-direction: column; gap: 1.2rem; }
+.playlist .slogan { font-family: var(--f-cond); font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: clamp(1.4rem, 5.6vw, 2rem); line-height: 1.05; }
+.lecteur iframe { width: 100%; height: 352px; border: 0; border-radius: 16px; display: block; }
+.liste-sons { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--filet); }
+.liste-sons li { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: .1rem .6rem; padding: .75rem 0; border-bottom: 1px solid var(--filet); align-items: baseline; }
+.liste-sons .n { font-family: var(--f-cond); font-weight: 700; color: var(--acier-lisible); font-variant-numeric: tabular-nums; }
+.liste-sons .t { font-weight: 700; color: var(--blanc); overflow-wrap: anywhere; }
+.liste-sons .a { color: var(--argent); }
+.liste-sons .p { grid-column: 2; font-size: .85rem; color: var(--acier-lisible); }
+.sous-titre { font-family: var(--f-cond); font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 1.1rem; margin: 0; color: var(--chrome); }
+.vide { color: var(--acier-lisible); font-style: italic; }
+
+/* Guest list */
+.guests .compteur-invites { display: flex; align-items: flex-end; gap: 1rem; flex-wrap: wrap; }
+.guests .nombre {
+  font-family: var(--f-cond); font-weight: 800; line-height: .8;
+  font-size: clamp(7rem, 38vw, 15rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--fuchsia);
+  text-shadow: 0 0 40px rgba(255,40,215,.45), 0 0 2px rgba(255,255,255,.4);
+}
+.guests .legende-nb { font-family: var(--f-titre); font-stretch: 120%; font-weight: 900; text-transform: uppercase; font-size: clamp(1.3rem, 5.5vw, 2rem); line-height: 1; padding-bottom: .6rem; }
+.pastilles { display: flex; flex-wrap: wrap; gap: .55rem; list-style: none; margin: 0; padding: 0; }
+.pastilles li {
+  font-family: var(--f-cond); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 1.15rem;
+  padding: .5rem 1rem; border-radius: 999px; line-height: 1.1;
+}
+.pastilles li:nth-child(3n+1) { background: var(--chrome-grad); color: #0b0b0b; }
+.pastilles li:nth-child(3n+2) { border: 1px solid var(--chrome); color: var(--chrome); }
+.pastilles li:nth-child(3n) { border: 1px solid var(--fuchsia); color: var(--fuchsia); box-shadow: inset 0 0 12px rgba(255,40,215,.15); }
+
+/* Code d'invitation */
+.code-boite { display: flex; flex-direction: column; gap: .8rem; max-width: 30rem; }
+.code-ligne { display: flex; gap: .5rem; flex-wrap: wrap; }
+.code-ligne input { flex: 1 1 10rem; text-transform: uppercase; letter-spacing: .1em; }
+.code-ligne .btn { flex: 0 0 auto; }
+
+/* Final */
+.final { padding-block: 7rem 3rem; text-align: center; overflow: hidden; position: relative; }
+.final .wrap { align-items: center; display: flex; flex-direction: column; gap: 1.8rem; }
+.final .one {
+  margin: 0;
+  font-family: var(--f-titre); font-stretch: 125%; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(2rem, 9.2vw, 7.6rem); line-height: .9; letter-spacing: -.035em;
+  display: flex; flex-direction: column; white-space: nowrap;
+}
+.final .one .fx { color: var(--fuchsia); text-shadow: 0 0 40px rgba(255,40,215,.45); }
+.final .hate { font-size: clamp(1.15rem, 4.5vw, 1.4rem); color: var(--argent); }
+.final .signature { font-family: var(--f-cond); font-weight: 800; font-size: clamp(2rem, 9vw, 3rem); letter-spacing: .1em; text-transform: uppercase; }
 footer {
-  text-align: center;
-  display: flex; flex-direction: column; gap: .4rem; align-items: center;
-  padding-top: 1rem;
+  border-top: 1px solid var(--filet);
+  padding-block: 1.8rem calc(1.8rem + env(safe-area-inset-bottom, 0px));
+  font-family: var(--f-cond); font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--acier-lisible); font-size: .85rem;
 }
-footer .grand { font-family: var(--f-titre); font-style: italic; font-size: clamp(1.6rem, 6vw, 2.2rem); }
-footer small { color: var(--argent-doux); font-size: .85rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 1.5rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  html { scroll-behavior: auto; }
+}
 </style>
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
-<div id="reflets" aria-hidden="true"></div>
+<!-- Dégradé chrome commun aux illustrations -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".45" stop-color="#bdbdbd"/>
+      <stop offset=".5" stop-color="#7a7a7a"/>
+      <stop offset=".55" stop-color="#efefef"/>
+      <stop offset="1" stop-color="#8a8a8a"/>
+    </linearGradient>
+    <linearGradient id="g-fuchsia" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF28D7"/>
+      <stop offset="1" stop-color="#FF28D7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
 
-<main class="page">
+<div class="flash" aria-hidden="true"></div>
 
-  <header class="ouverture">
-    <div class="boule-wrap"><canvas id="boule" aria-hidden="true"></canvas></div>
-    <p class="surtitre">Thirty, flirty &amp; silver</p>
-    <h1><span class="chrome">Silver Fever</span><span class="petit chrome">mes 30 ans</span></h1>
-    <p class="quand">
-      <span>Samedi 30 janvier 2027</span>
-      <span>19h30</span>
-      <span>Expérience Park, Wittenheim</span>
-    </p>
-    <div class="compte" id="compte" aria-label="Compte à rebours avant la soirée">
-      <div><b id="cj">--</b><small>jours</small></div>
-      <div><b id="ch">--</b><small>heures</small></div>
-      <div><b id="cm">--</b><small>min</small></div>
-      <div><b id="cs">--</b><small>sec</small></div>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#accueil" aria-label="Silver Fever, retour en haut"><span class="chrome-txt">SILVER FEVER</span><b>30</b></a>
+    <nav class="nav-liens" aria-label="Sections">
+      <a href="#invitation">Invitation</a>
+      <a href="#infos">Infos</a>
+      <a href="#programme">Programme</a>
+      <a href="#playlist">Playlist</a>
+      <a href="#guests" class="lien-guests">Guest list</a>
+    </nav>
+    <div class="nav-droite">
+      <a class="btn btn-fuchsia" href="#rsvp">RSVP</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span></button>
     </div>
-    <div class="actions">
-      <a class="btn btn-plein" href="#venue">Je réponds</a>
-      <a class="btn btn-trait" href="#son">Je propose un son</a>
-    </div>
-  </header>
+  </div>
+</header>
 
-  <section id="invitation" aria-labelledby="t-invitation">
-    <p class="etiquette">L'invitation</p>
-    <h2 id="t-invitation">On sort le grand jeu</h2>
-    <div class="texte">
-      <p>Pour mes 30 ans, on sort le grand jeu : une soirée sous le signe de l'argent, des reflets métallisés et des détails qui brillent.</p>
-      <p>L'idée ? Une ambiance chic, festive et un brin disco, entre élégance nocturne et extravagance assumée. Pas besoin d'un déguisement ni d'en faire des tonnes : une touche d'argenté, un accessoire qui capte la lumière, une pièce qui brille… et le tour est joué.</p>
-      <p>Le temps d'une soirée, on laisse le quotidien au vestiaire, on sort les bulles, on monte le son et on fait scintiller la nuit.</p>
-      <p class="signature">Thirty, flirty &amp; silver. 🪩</p>
+<div class="menu" id="menu" aria-hidden="true">
+  <ul>
+    <li><a href="#invitation">L'invitation</a></li>
+    <li><a href="#infos">Infos pratiques</a></li>
+    <li><a href="#programme">Le programme</a></li>
+    <li><a href="#rsvp">Je réponds</a></li>
+    <li><a href="#playlist">La playlist</a></li>
+    <li class="lien-guests"><a href="#guests">Guest list</a></li>
+  </ul>
+  <p class="pied-menu">30.01.2027 · Le Surnaturel · Mulhouse</p>
+</div>
+
+<main>
+
+  <!-- ============ ACCUEIL ============ -->
+  <section class="hero" id="accueil" aria-label="Accueil">
+    <div class="faisceaux" aria-hidden="true"></div>
+    <canvas id="boule" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="affiche-haut entree e1" aria-hidden="true"><span>Private night</span><span>Vol. 30</span></div>
+      <p class="turns entree e2">Héléana turns 30</p>
+      <h1 class="silver entree e3"><span class="chrome-txt">Silver</span><span class="chrome-txt">Fever</span></h1>
+      <p class="date-hero entree e4"><span>30.01.2027</span><span class="sep" aria-hidden="true">/</span><span>19:00</span><span class="sep" aria-hidden="true">/</span><span>Mulhouse</span></p>
+      <div class="entree e5" style="width:100%;display:flex;justify-content:center">
+        <div class="compte" id="compte" role="timer" aria-label="Compte à rebours avant la soirée">
+          <div class="case"><b id="cj">--</b><small>Jours</small></div>
+          <div class="case"><b id="ch">--</b><small>Heures</small></div>
+          <div class="case"><b id="cm">--</b><small>Min</small></div>
+          <div class="case"><b id="cs">--</b><small>Sec</small></div>
+        </div>
+        <p class="compte-fini chrome-txt" id="compte-fini" hidden></p>
+      </div>
+      <div class="actions entree e6">
+        <a class="btn btn-chrome" href="#invitation">Enter the night <span class="fleche" aria-hidden="true">↓</span></a>
+        <a class="btn btn-trait" href="#rsvp">Je réponds</a>
+      </div>
+      <p class="defiler entree e6" aria-hidden="true">Scroll</p>
     </div>
   </section>
 
-  <section id="infos" aria-labelledby="t-infos">
-    <p class="etiquette">Infos pratiques</p>
-    <h2 id="t-infos">Le rendez-vous</h2>
-    <dl class="infos">
-      <dt>Quand</dt>
-      <dd>Samedi 30 janvier 2027, à partir de 19h30, et jusqu'au bout de la nuit
-        <span class="liens-cal">
-          <a id="lien-google" href="#" target="_blank" rel="noopener">Ajouter à Google Agenda</a>
-          <button type="button" class="lien-bouton" id="lien-ics">Ajouter à mon agenda (iPhone, Outlook)</button>
-        </span>
-      </dd>
-      <dt>Où</dt>
-      <dd>Expérience Park, Wittenheim
-        <a class="mini" href="https://www.google.com/maps/search/?api=1&amp;query=Exp%C3%A9rience%20Park%20Wittenheim" target="_blank" rel="noopener">Voir sur la carte</a>
-      </dd>
-      <dt>À table</dt>
-      <dd>Apéro dînatoire sur place. Venez le ventre vide.</dd>
-      <dt>Réponse</dt>
-      <dd>Avant le vendredi 15 janvier, <a href="#venue">par le sondage plus bas</a>.</dd>
-      <dt>Dress code</dt>
-      <dd>Une touche de silver, autant ou aussi subtile que vous le souhaitez. Le reste, c'est vous qui le faites. 🥂✨</dd>
-    </dl>
+  <!-- ============ INVITATION ============ -->
+  <section class="bloc invitation" id="invitation" aria-labelledby="t-invitation">
+    <div class="wrap">
+      <p class="eyebrow reveal">L'invitation</p>
+      <div class="grille">
+        <h2 class="accroche chrome-txt reveal" id="t-invitation">30 ans, ça se fête comme il se doit.</h2>
+        <div class="corps reveal">
+          <p>Une nouvelle décennie, une bonne excuse pour réunir <strong>les personnes qui comptent</strong>, trinquer, danser et profiter d'une soirée qui s'annonce mémorable.</p>
+          <p class="rdv">Rendez-vous le samedi 30 janvier 2027 pour une <em>Silver Fever night.</em></p>
+          <p class="dress">Dress to impress… ou viens simplement comme tu es. L'essentiel, c'est d'être là.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <aside class="sans-gosses" aria-labelledby="t-gosses">
-    <span class="tampon">18+ only</span>
-    <h2 id="t-gosses">Soirée sans gosses</h2>
-    <p>On adore vos enfants, vraiment. Mais ce soir-là, ils dorment chez mamie. Prévoyez la baby-sitter, pas les doudous.</p>
-  </aside>
+  <!-- ============ INFOS PRATIQUES ============ -->
+  <section class="bloc" id="infos" aria-labelledby="t-infos">
+    <div class="wrap">
+      <div class="entete reveal">
+        <p class="eyebrow">Save the date</p>
+        <h2 class="titre chrome-txt" id="t-infos">Les infos pratiques</h2>
+      </div>
+      <div class="cartes-infos">
+        <article class="carte-info demi reveal">
+          <span class="lab">Date</span>
+          <span class="val grand">30.01.27</span>
+          <span class="txt">Samedi 30 janvier 2027</span>
+        </article>
+        <article class="carte-info demi reveal">
+          <span class="lab">Heure</span>
+          <span class="val grand">19:00</span>
+          <span class="txt">À partir de 19 h</span>
+        </article>
+        <article class="carte-info reveal">
+          <span class="lab">Lieu</span>
+          <span class="val">Bar Le Surnaturel</span>
+        </article>
+        <article class="carte-info moyen reveal">
+          <span class="lab">Adresse</span>
+          <span class="val">6 rue Poincaré, Mulhouse</span>
+        </article>
+        <article class="carte-info reveal">
+          <span class="lab">Au programme</span>
+          <span class="txt">Apéritif dînatoire, cocktails, musique, danse et retrouvailles.</span>
+        </article>
+        <article class="carte-info large reveal">
+          <span class="lab">Dress code</span>
+          <span class="val">Libre</span>
+          <span class="txt">Une touche argentée, métallique ou scintillante est la bienvenue pour celles et ceux qui souhaitent jouer le jeu de Silver Fever.</span>
+        </article>
+        <article class="carte-info large enfants reveal">
+          <span class="lab">Grown-ups only</span>
+          <span class="val">Une soirée entre grands</span>
+          <span class="txt">On adore vos enfants, vraiment. Mais pour une fois, on leur offre une soirée pyjama et on garde la piste de danse pour les adultes. Si la garde s'avère vraiment compliquée, parles-en à Héléana : on trouvera une solution.</span>
+        </article>
+      </div>
+      <div class="boutons-infos reveal">
+        <a class="btn btn-chrome" href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Surnaturel%2C%206%20rue%20Poincar%C3%A9%2C%20Mulhouse" target="_blank" rel="noopener">Itinéraire <span class="fleche" aria-hidden="true">↗</span></a>
+        <button class="btn btn-trait" type="button" id="btn-cal" aria-expanded="false" aria-controls="cal-choix">Ajouter au calendrier</button>
+        <div class="cal-choix" id="cal-choix" hidden>
+          <button class="btn btn-trait" type="button" id="cal-ics">iPhone, Mac, Outlook</button>
+          <a class="btn btn-trait" id="cal-google" href="#" target="_blank" rel="noopener">Google Agenda <span class="fleche" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <section id="venue" aria-labelledby="t-venue">
-    <p class="etiquette">Sondage</p>
-    <h2 id="t-venue">Tu viens briller ?</h2>
-    <div class="carte">
-      <p class="echeance" id="echeance">Réponds avant le <b>15 janvier</b>, ta réponse m'arrive directement.</p>
+  <!-- ============ PROGRAMME ============ -->
+  <section class="bloc" id="programme" aria-labelledby="t-programme">
+    <div class="wrap">
+      <div class="entete reveal">
+        <p class="eyebrow">The night</p>
+        <h2 class="titre chrome-txt" id="t-programme">Le programme</h2>
+        <p class="note-prog">Une idée de l'ambiance, pas un minutage : la soirée vivra à son rythme.</p>
+      </div>
+      <p class="glisser" aria-hidden="true"><span>Glisse</span><span class="points" id="points"><span class="actif"></span><span></span><span></span><span></span></span></p>
+      <div class="programme-defile reveal" id="programme-defile" tabindex="0" aria-label="Les moments de la soirée, à faire défiler">
 
-      <div class="deja" id="deja" hidden>
-        <p id="deja-texte"></p>
-        <button type="button" class="lien-bouton" id="changer">Changer ma réponse</button>
+        <article class="carte-prog">
+          <div class="art">
+            <span class="num">01</span>
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <path d="M60 170 V48 a40 40 0 0 1 80 0 V170" fill="none" stroke="url(#g-chrome)" stroke-width="5"/>
+              <path d="M74 170 V54 a26 26 0 0 1 52 0 V170 Z" fill="url(#g-fuchsia)" opacity=".5"/>
+              <path d="M74 170 L40 196 H160 L126 170 Z" fill="#ffffff" opacity=".08"/>
+              <line x1="20" y1="170" x2="180" y2="170" stroke="url(#g-chrome)" stroke-width="2"/>
+              <circle cx="116" cy="112" r="3.5" fill="#E8E8E8"/>
+              <path class="scintille" d="M160 40 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="corps">
+            <h3><span class="heure">19 h</span> · The arrival</h3>
+            <p>Accueil des invités, retrouvailles et premiers verres.</p>
+          </div>
+        </article>
+
+        <article class="carte-prog">
+          <div class="art">
+            <span class="num">02</span>
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <g transform="rotate(-14 80 110)">
+                <path d="M48 70 Q50 104 80 106 Q110 104 112 70 Z" fill="none" stroke="url(#g-chrome)" stroke-width="5" stroke-linejoin="round"/>
+                <path d="M54 80 Q60 100 80 101 Q100 100 106 80 Z" fill="#FF28D7" opacity=".55"/>
+                <line x1="80" y1="106" x2="80" y2="156" stroke="url(#g-chrome)" stroke-width="5"/>
+                <line x1="60" y1="158" x2="100" y2="158" stroke="url(#g-chrome)" stroke-width="5" stroke-linecap="round"/>
+              </g>
+              <g transform="rotate(14 122 110)">
+                <path d="M90 70 Q92 104 122 106 Q152 104 154 70 Z" fill="none" stroke="url(#g-chrome)" stroke-width="5" stroke-linejoin="round"/>
+                <path d="M96 80 Q102 100 122 101 Q142 100 148 80 Z" fill="#E8E8E8" opacity=".35"/>
+                <line x1="122" y1="106" x2="122" y2="156" stroke="url(#g-chrome)" stroke-width="5"/>
+                <line x1="102" y1="158" x2="142" y2="158" stroke="url(#g-chrome)" stroke-width="5" stroke-linecap="round"/>
+              </g>
+              <path class="scintille" d="M101 28 l3 10 10 3 -10 3 -3 10 -3 -10 -10 -3 10 -3z" fill="#fff"/>
+              <path class="scintille s2" d="M140 40 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2z" fill="#FF28D7"/>
+            </svg>
+          </div>
+          <div class="corps">
+            <h3>Apéritif dînatoire</h3>
+            <p>On trinque, on grignote et on profite de la soirée.</p>
+          </div>
+        </article>
+
+        <article class="carte-prog">
+          <div class="art">
+            <span class="num">03</span>
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <circle cx="100" cy="92" r="62" fill="#111" stroke="url(#g-chrome)" stroke-width="3"/>
+              <circle cx="100" cy="92" r="48" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+              <circle cx="100" cy="92" r="36" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+              <circle cx="100" cy="92" r="18" fill="#FF28D7"/>
+              <circle cx="100" cy="92" r="3" fill="#080808"/>
+              <g class="eq" fill="url(#g-chrome)">
+                <rect x="40" y="166" width="12" height="26" rx="2"/>
+                <rect x="58" y="160" width="12" height="32" rx="2"/>
+                <rect x="76" y="168" width="12" height="24" rx="2"/>
+                <rect x="94" y="158" width="12" height="34" rx="2"/>
+                <rect x="112" y="164" width="12" height="28" rx="2"/>
+                <rect x="130" y="160" width="12" height="32" rx="2"/>
+                <rect x="148" y="168" width="12" height="24" rx="2"/>
+              </g>
+            </svg>
+          </div>
+          <div class="corps">
+            <h3>Music &amp; dance</h3>
+            <p>La musique monte, la piste s'anime et la soirée continue.</p>
+          </div>
+        </article>
+
+        <article class="carte-prog">
+          <div class="art">
+            <span class="num">04</span>
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <line x1="100" y1="0" x2="100" y2="46" stroke="url(#g-chrome)" stroke-width="2"/>
+              <circle cx="100" cy="98" r="52" fill="url(#g-chrome)"/>
+              <g stroke="#080808" stroke-width="2.2" fill="none" opacity=".55">
+                <ellipse cx="100" cy="98" rx="52" ry="18"/>
+                <ellipse cx="100" cy="98" rx="52" ry="36"/>
+                <line x1="48" y1="98" x2="152" y2="98"/>
+                <ellipse cx="100" cy="98" rx="18" ry="52"/>
+                <ellipse cx="100" cy="98" rx="36" ry="52"/>
+                <line x1="100" y1="46" x2="100" y2="150"/>
+              </g>
+              <g stroke="#FF28D7" stroke-width="2" opacity=".75" stroke-linecap="round">
+                <line x1="30" y1="150" x2="14" y2="172"/>
+                <line x1="170" y1="150" x2="186" y2="172"/>
+                <line x1="40" y1="166" x2="34" y2="190"/>
+                <line x1="160" y1="166" x2="166" y2="190"/>
+              </g>
+              <path class="scintille" d="M132 66 l3 10 10 3 -10 3 -3 10 -3 -10 -10 -3 10 -3z" fill="#fff"/>
+              <path class="scintille s2" d="M70 120 l2 7 7 2 -7 2 -2 7 -2 -7 -7 -2 7 -2z" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="corps">
+            <h3>Silver Fever all night</h3>
+            <p>Des souvenirs, des photos et une soirée à célébrer ensemble.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RSVP ============ -->
+  <section class="bloc rsvp" id="rsvp" aria-labelledby="t-rsvp">
+    <div class="wrap duo">
+      <div class="entete reveal">
+        <p class="eyebrow">RSVP</p>
+        <h2 class="titre" id="t-rsvp">Alors, tu <span class="fx">viens&nbsp;?</span></h2>
+        <p class="delai" id="delai">Ta réponse est attendue avant le <b>13 décembre 2026</b>.</p>
       </div>
 
-      <form id="form-venue" novalidate>
-        <div class="champ">
-          <label for="v-prenom">Ton prénom (et l'initiale de ton nom, au cas où)</label>
-          <input type="text" id="v-prenom" name="prenom" maxlength="80" autocomplete="name" required>
+      <div class="panneau reveal">
+        <div class="merci" id="merci" hidden tabindex="-1">
+          <p class="gros" id="merci-titre"></p>
+          <p id="merci-texte"></p>
+          <button class="btn btn-trait" type="button" id="modifier">Modifier ma réponse</button>
         </div>
 
-        <fieldset>
-          <legend class="legende">Tu seras là le 30 janvier ?</legend>
-          <div class="choix-ligne">
-            <label class="choix">
-              <input type="radio" name="venue" value="oui" id="v-oui">
-              <span><b>Oui</b><small>je sors l'argenté</small></span>
-            </label>
-            <label class="choix">
-              <input type="radio" name="venue" value="non" id="v-non">
-              <span><b>Non</b><small>je trinquerai de loin</small></span>
+        <form id="form-rsvp" novalidate>
+          <div class="deux">
+            <div class="champ">
+              <label for="r-prenom">Prénom</label>
+              <input type="text" id="r-prenom" name="prenom" maxlength="60" autocomplete="given-name" required>
+            </div>
+            <div class="champ">
+              <label for="r-nom">Nom</label>
+              <input type="text" id="r-nom" name="nom" maxlength="60" autocomplete="family-name" required>
+            </div>
+          </div>
+
+          <div class="champ">
+            <label for="r-email">E-mail <span class="fac">(facultatif)</span></label>
+            <input type="email" id="r-email" name="email" maxlength="120" autocomplete="email" inputmode="email">
+            <span class="aide">Seulement si Héléana a besoin de te recontacter. Jamais affiché sur le site.</span>
+          </div>
+
+          <fieldset>
+            <legend class="legende">Seras-tu de la partie&nbsp;?</legend>
+            <div class="choix-venue">
+              <label class="choix">
+                <input type="radio" name="venue" value="oui" id="r-oui" required>
+                <span>Oui, évidemment&nbsp;!</span>
+              </label>
+              <label class="choix">
+                <input type="radio" name="venue" value="non" id="r-non">
+                <span>Malheureusement, je ne pourrai pas venir.</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="conditionnel" id="si-oui" hidden>
+            <div class="champ">
+              <label for="r-allergies">Allergie ou contrainte alimentaire <span class="fac">(facultatif)</span></label>
+              <input type="text" id="r-allergies" name="allergies" maxlength="300" placeholder="Végétarien, sans gluten, allergie aux fruits à coque…">
+            </div>
+            <label class="case-a-cocher" id="bloc-visible">
+              <input type="checkbox" id="r-visible" name="visible">
+              <span>J'accepte que mon prénom apparaisse dans la guest list du site.</span>
             </label>
           </div>
-        </fieldset>
 
-        <div class="champ" id="bloc-nb" hidden>
-          <label for="v-nb">Vous serez combien, toi compris ?</label>
-          <select id="v-nb" name="nb">
-            <option value="1">1 personne</option>
-            <option value="2">2 personnes</option>
-            <option value="3">3 personnes</option>
-            <option value="4">4 personnes</option>
-          </select>
-        </div>
+          <div class="champ">
+            <label for="r-mot">Un petit mot pour Héléana <span class="fac">(facultatif)</span></label>
+            <textarea id="r-mot" name="mot" maxlength="600" rows="3"></textarea>
+          </div>
 
-        <div class="champ">
-          <label for="v-mot">Un petit mot <span class="facultatif">(facultatif)</span></label>
-          <textarea id="v-mot" name="mot" maxlength="500" rows="3"></textarea>
-        </div>
+          <div class="champ" id="bloc-code" hidden>
+            <label for="r-code">Code d'invitation</label>
+            <input type="text" id="r-code" name="code" maxlength="40" autocomplete="off" autocapitalize="characters" spellcheck="false">
+            <span class="aide">Il figure dans le message d'invitation d'Héléana.</span>
+          </div>
 
-        <input type="text" name="_gotcha" class="piege" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="message" id="msg-venue" role="status" hidden></p>
-        <button type="submit" class="btn btn-plein" id="btn-venue">Envoyer ma réponse</button>
-      </form>
+          <input type="text" name="site_web" class="piege" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <p class="message" id="msg-rsvp" role="alert" hidden></p>
+          <button class="btn btn-fuchsia" type="submit" id="btn-rsvp">Envoyer ma réponse</button>
+        </form>
+      </div>
     </div>
   </section>
 
-  <section id="son" aria-labelledby="t-son">
-    <p class="etiquette">La playlist</p>
-    <h2 id="t-son">Ton son pour la soirée</h2>
-    <p class="texte">Le morceau qui te fait monter sur la piste, celui qu'on chante tous en chœur à 2h du matin. Propose-le : il s'ajoute à la liste ci-dessous, que tout le monde peut voir.</p>
-    <div class="carte">
-      <form id="form-son" novalidate>
-        <div class="deux">
-          <div class="champ">
-            <label for="s-titre">Titre</label>
-            <input type="text" id="s-titre" name="titre" maxlength="120" placeholder="Dancing Queen" required>
+  <!-- ============ PLAYLIST ============ -->
+  <section class="bloc playlist" id="playlist" aria-labelledby="t-playlist">
+    <div class="wrap">
+      <div class="grille">
+        <div class="platine reveal" aria-hidden="true">
+          <div class="disque-tourne"><div class="vinyle"></div></div>
+          <div class="bras"></div>
+        </div>
+        <div class="texte-pl">
+          <div class="entete reveal">
+            <p class="eyebrow">Soundtrack</p>
+            <h2 class="titre chrome-txt" id="t-playlist">La playlist</h2>
+            <p class="slogan">Une soirée, une ambiance, une <span style="white-space:nowrap">bande-son.</span></p>
           </div>
-          <div class="champ">
-            <label for="s-artiste">Artiste</label>
-            <input type="text" id="s-artiste" name="artiste" maxlength="120" placeholder="ABBA">
+          <div class="reveal" style="display:flex;flex-direction:column;gap:1rem">
+            <div style="display:flex;flex-wrap:wrap;gap:.7rem">
+              <a class="btn btn-chrome" id="btn-ecouter" href="#" target="_blank" rel="noopener" hidden>Écouter la playlist <span class="fleche" aria-hidden="true">↗</span></a>
+              <button class="btn btn-trait" type="button" id="btn-lecteur" hidden>Afficher le lecteur</button>
+            </div>
+            <p class="message info" id="pl-bientot" hidden>La playlist officielle arrive bientôt. En attendant, glisse-nous tes morceaux ci-dessous.</p>
+            <div class="lecteur" id="lecteur" hidden></div>
           </div>
         </div>
-        <div class="champ">
-          <label for="s-prenom">Proposé par <span class="facultatif">(facultatif)</span></label>
-          <input type="text" id="s-prenom" name="propose_par" maxlength="80" autocomplete="given-name">
-        </div>
-        <input type="text" name="_gotcha" class="piege" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="message" id="msg-son" role="status" hidden></p>
-        <button type="submit" class="btn btn-plein" id="btn-son">Ajouter à la playlist</button>
-      </form>
-    </div>
+      </div>
 
-    <div class="mes-sons">
-      <p class="etiquette" id="playlist-titre">La playlist de la soirée</p>
-      <ol class="playlist" id="playlist" aria-live="polite"></ol>
-      <p class="vide" id="playlist-vide">La playlist est encore vide. Le premier son, c'est peut-être le tien.</p>
+      <div class="duo">
+      <div class="panneau reveal">
+        <form id="form-son" novalidate>
+          <p class="sous-titre">Propose ton son</p>
+          <div class="deux">
+            <div class="champ">
+              <label for="s-titre">Titre</label>
+              <input type="text" id="s-titre" maxlength="120" placeholder="I Feel Love" required>
+            </div>
+            <div class="champ">
+              <label for="s-artiste">Artiste <span class="fac">(facultatif)</span></label>
+              <input type="text" id="s-artiste" maxlength="120" placeholder="Donna Summer">
+            </div>
+          </div>
+          <div class="champ">
+            <label for="s-par">Ton prénom <span class="fac">(facultatif)</span></label>
+            <input type="text" id="s-par" maxlength="60" autocomplete="given-name">
+          </div>
+          <input type="text" name="site_web" class="piege" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="message" id="msg-son" role="alert" hidden></p>
+          <button class="btn btn-fuchsia" type="submit" id="btn-son">Ajouter à la liste</button>
+        </form>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-direction:column;gap:.8rem">
+        <p class="sous-titre" id="sons-titre">Les morceaux proposés</p>
+        <ol class="liste-sons" id="liste-sons"></ol>
+        <p class="vide" id="sons-vide">Aucun morceau pour l'instant. Le premier, c'est peut-être le tien.</p>
+      </div>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <p class="grand chrome">Thirty, flirty &amp; silver.</p>
-    <small>Samedi 30 janvier 2027 · 19h30 · Expérience Park, Wittenheim</small>
-  </footer>
+  <!-- ============ GUEST LIST ============ -->
+  <section class="bloc guests" id="guests" aria-labelledby="t-guests">
+    <div class="wrap">
+      <div class="entete reveal">
+        <p class="eyebrow">Who's in</p>
+        <h2 class="titre chrome-txt" id="t-guests">The guest list</h2>
+      </div>
+      <div class="compteur-invites reveal" id="bloc-compteur" hidden>
+        <span class="nombre" id="nb-confirmes">0</span>
+        <span class="legende-nb" id="legende-confirmes">confirmés</span>
+      </div>
+      <ul class="pastilles reveal" id="pastilles" aria-label="Prénoms des invités confirmés"></ul>
+      <p class="vide" id="guests-info"></p>
+    </div>
+  </section>
+
+  <!-- Bloc commun : saisie du code d'invitation (si le lien reçu n'en contient pas) -->
+  <template id="tpl-code">
+    <div class="code-boite">
+      <p class="message info">Entre le code d'invitation reçu avec le lien du site pour voir cette partie.</p>
+      <form class="code-ligne" novalidate>
+        <label class="sr-only">Code d'invitation</label>
+        <input type="text" maxlength="40" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="CODE">
+        <button class="btn btn-trait" type="submit">Valider</button>
+      </form>
+    </div>
+  </template>
+
+  <!-- ============ FINAL ============ -->
+  <section class="final" id="final" aria-labelledby="t-final">
+    <div class="wrap">
+      <h2 class="one reveal" id="t-final"><span class="chrome-txt">One night.</span><span class="chrome-txt">One fever.</span><span class="fx">30 years.</span></h2>
+      <p class="hate reveal">J'ai hâte de célébrer ça avec vous.</p>
+      <p class="signature chrome-txt reveal">Héléana ✨</p>
+      <a class="btn btn-fuchsia reveal" href="#rsvp">Répondre à l'invitation</a>
+    </div>
+  </section>
 
 </main>
 
+<footer>
+  <div class="wrap">
+    <span>Silver Fever · 30.01.2027 · Mulhouse</span>
+    <span>Invitation privée · merci de ne pas partager ce lien</span>
+  </div>
+</footer>
+
 <script>
-/* ============================================================
-   RÉGLAGES
-   FORMSPREE_ID : l'identifiant du formulaire Formspree, les
-   8 caractères après « formspree.io/f/ » (exemple : "xbjnqwer").
-   Les deux formulaires du site (venue et chansons) l'utilisent ;
-   l'objet du mail indique de quoi il s'agit.
-   ============================================================ */
-const FORMSPREE_ID = "xwllberr";
+/* =================================================================
+   RÉGLAGES DU SITE
+   Tout ce qui se modifie facilement est ici.
+   ================================================================= */
+const CONFIG = {
+  // Base de données (projet Supabase « silver-fever »). Clé publique : c'est normal qu'elle soit visible.
+  supabaseUrl: "https://rpsysgwdxifeneaxpkkx.supabase.co",
+  supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwc3lzZ3dkeGlmZW5lYXhwa2t4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxNzM3NzMsImV4cCI6MjEwODc0OTc3M30.Hssp4zMjCOf42Fa-Lr8fzQBhF__EyBqhZncR_AN_gs0",
 
-/* SUPABASE : le projet « silver-fever », séparé de tout autre projet,
-   qui garde la playlist partagée (table sf_sons, créée par
-   silver-fever.sql). Ces deux valeurs sont publiques par nature
-   (clé « publishable » sb_publishable_…, ou ancienne clé « anon » eyJ…).
-   Ne jamais mettre ici une clé « secret » ou « service_role ». */
-const SUPABASE_URL = "https://rpsysgwdxifeneaxpkkx.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwc3lzZ3dkeGlmZW5lYXhwa2t4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxNzM3NzMsImV4cCI6MjEwODc0OTc3M30.Hssp4zMjCOf42Fa-Lr8fzQBhF__EyBqhZncR_AN_gs0";
+  // Mail de notification à chaque réponse (Formspree). Mettre "" pour ne plus en recevoir.
+  formspreeId: "xwllberr",
 
-// Début de la soirée, heure de Paris (UTC+1 en janvier)
-const DEBUT = new Date("2027-01-30T19:30:00+01:00");
-const DATE_LIMITE = new Date("2027-01-16T00:00:00+01:00"); // réponses attendues jusqu'au 15 janvier inclus
-const TITRE_AGENDA = "Silver Fever · 30 ans";
-const LIEU = "Expérience Park, Wittenheim";
-const DETAILS_AGENDA = "Apéro dînatoire sur place. Dress code : une touche de silver. Soirée sans enfants.";
+  // Lien de la playlist (Spotify, Deezer, Apple Music…). Vide = « bientôt disponible ».
+  playlistUrl: "",
 
-/* ---------- Petits outils ---------- */
+  // Dates, heure de Paris (UTC+1 en hiver)
+  debut: "2027-01-30T19:00:00+01:00",
+  dateLimite: "2026-12-14T00:00:00+01:00",   // réponses attendues jusqu'au 13 décembre inclus
+  apresFete: "2027-01-31T12:00:00+01:00",
+
+  // Pour l'agenda
+  titreAgenda: "SILVER FEVER · Héléana's 30th Birthday",
+  lieuAgenda: "Bar Le Surnaturel, 6 rue Poincaré, Mulhouse",
+  detailsAgenda: "Apéritif dînatoire, cocktails, musique et danse. Dress code : libre, une touche argentée bienvenue."
+};
+
+/* ---------- Outils ---------- */
 const $ = (id) => document.getElementById(id);
-const reduitMouvement = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function lire(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
+function ecrire(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+function effacer(k) { try { localStorage.removeItem(k); } catch (e) {} }
+function montrerMessage(el, texte, type) { el.textContent = texte; el.className = "message " + type; el.hidden = false; }
 
-function lire(cle) { try { return JSON.parse(localStorage.getItem(cle)); } catch (e) { return null; } }
-function ecrire(cle, val) { try { localStorage.setItem(cle, JSON.stringify(val)); } catch (e) {} }
+const baseConfiguree = /^https:\/\/[a-z0-9]+\.supabase\.co$/.test(CONFIG.supabaseUrl) && CONFIG.supabaseKey.length > 30;
 
-class ErreurEnvoi extends Error {}
+class ErreurBase extends Error { constructor(code, msg) { super(msg || code); this.code = code; } }
 
-// Envoie un formulaire à Formspree, qui le transmet par mail
-async function envoyer(champs, form) {
-  if (!/^[a-z0-9]{6,}$/i.test(FORMSPREE_ID) || FORMSPREE_ID === "A_REMPLACER") {
-    throw new ErreurEnvoi("Le formulaire n'est pas encore branché. Préviens directement par message en attendant.");
+async function rpc(fonction, params) {
+  if (!baseConfiguree) throw new ErreurBase("non_configure");
+  const entetes = { apikey: CONFIG.supabaseKey, "Content-Type": "application/json" };
+  if (CONFIG.supabaseKey.startsWith("eyJ")) entetes.Authorization = "Bearer " + CONFIG.supabaseKey;
+  let rep;
+  try {
+    rep = await fetch(CONFIG.supabaseUrl + "/rest/v1/rpc/" + fonction, { method: "POST", headers: entetes, body: JSON.stringify(params) });
+  } catch (e) { throw new ErreurBase("reseau"); }
+  const texte = await rep.text();
+  let json = null; try { json = texte ? JSON.parse(texte) : null; } catch (e) {}
+  if (!rep.ok) {
+    const m = (json && (json.message || json.hint)) || "";
+    if (m.includes("code_invalide")) throw new ErreurBase("code_invalide");
+    if (m.includes("trop_de_reponses") || m.includes("playlist_pleine")) throw new ErreurBase("plein");
+    if (m.includes("check constraint") && m.includes("email")) throw new ErreurBase("email");
+    if (m.includes("check constraint")) throw new ErreurBase("trop_long");
+    throw new ErreurBase("serveur", m);
   }
-  const piege = form.querySelector('input[name="_gotcha"]');
-  if (piege && piege.value) return; // robot : on fait semblant que tout va bien
-  const rep = await fetch("https://formspree.io/f/" + FORMSPREE_ID, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(champs)
-  });
-  if (!rep.ok) throw new Error("HTTP " + rep.status);
+  return json;
 }
 
-function afficherMessage(el, texte, type) {
-  el.textContent = texte;
-  el.className = "message " + type;
-  el.hidden = false;
-}
+/* ---------- Code d'invitation ----------
+   Le lien envoyé aux invités contient le code : …/silver-fever/?invite=CODE
+   Il est mémorisé dans le navigateur, puis retiré de la barre d'adresse. */
+let code = null;
+(function lireCode() {
+  const url = new URL(location.href);
+  const c = url.searchParams.get("invite");
+  if (c) {
+    code = c.trim();
+    ecrire("sf-code", code);
+    url.searchParams.delete("invite");
+    history.replaceState(null, "", url.pathname + (url.search || "") + url.hash);
+  } else {
+    code = lire("sf-code");
+  }
+})();
+let codeValide = false;
+let donnees = null;
 
-const ERREUR_RESEAU = "Impossible d'envoyer pour l'instant. Vérifie ta connexion et réessaie dans quelques minutes.";
-const texteErreur = (err) => err instanceof ErreurEnvoi ? err.message : ERREUR_RESEAU;
+/* ---------- Navigation ---------- */
+const nav = $("nav");
+const majNav = () => nav.classList.toggle("scrolle", window.scrollY > 30);
+majNav();
+window.addEventListener("scroll", majNav, { passive: true });
+
+const burger = $("burger"), menu = $("menu");
+function basculerMenu(ouvrir) {
+  burger.setAttribute("aria-expanded", String(ouvrir));
+  burger.setAttribute("aria-label", ouvrir ? "Fermer le menu" : "Ouvrir le menu");
+  menu.classList.toggle("ouvert", ouvrir);
+  menu.setAttribute("aria-hidden", String(!ouvrir));
+  document.body.style.overflow = ouvrir ? "hidden" : "";
+  if (ouvrir) menu.querySelector("a").focus();
+}
+burger.addEventListener("click", () => basculerMenu(burger.getAttribute("aria-expanded") !== "true"));
+menu.addEventListener("click", (e) => { if (e.target.closest("a")) basculerMenu(false); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && menu.classList.contains("ouvert")) { basculerMenu(false); burger.focus(); } });
+
+/* ---------- Apparitions au défilement ---------- */
+if ("IntersectionObserver" in window && !reduit) {
+  const obs = new IntersectionObserver((entrees) => {
+    entrees.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("vu"); obs.unobserve(en.target); } });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+  document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("vu"));
+}
 
 /* ---------- Compte à rebours ---------- */
+const DEBUT = new Date(CONFIG.debut), APRES = new Date(CONFIG.apresFete);
 function majCompte() {
-  let reste = Math.max(0, DEBUT - Date.now());
+  const maintenant = Date.now();
+  let reste = DEBUT - maintenant;
+  if (reste <= 0) {
+    $("compte").hidden = true;
+    const fini = $("compte-fini");
+    fini.textContent = maintenant < APRES ? "The night is on ✨" : "Merci d'avoir fait briller cette nuit ✨";
+    fini.hidden = false;
+    return false;
+  }
   const j = Math.floor(reste / 864e5); reste -= j * 864e5;
   const h = Math.floor(reste / 36e5); reste -= h * 36e5;
   const m = Math.floor(reste / 6e4); reste -= m * 6e4;
@@ -574,327 +1400,399 @@ function majCompte() {
   $("ch").textContent = String(h).padStart(2, "0");
   $("cm").textContent = String(m).padStart(2, "0");
   $("cs").textContent = String(s).padStart(2, "0");
+  return true;
 }
-majCompte();
-setInterval(majCompte, 1000);
+if (majCompte()) { const t = setInterval(() => { if (!majCompte()) clearInterval(t); }, 1000); }
 
-/* ---------- Agenda (pas d'heure de fin : seul le début est indiqué) ---------- */
-function formatUTC(d) { return d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, ""); }
-$("lien-google").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-  + "&text=" + encodeURIComponent(TITRE_AGENDA)
-  + "&dates=" + formatUTC(DEBUT) + "/" + formatUTC(DEBUT)
-  + "&location=" + encodeURIComponent(LIEU)
-  + "&details=" + encodeURIComponent(DETAILS_AGENDA);
-
-$("lien-ics").addEventListener("click", () => {
+/* ---------- Calendrier ---------- */
+function utc(d) { return d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, ""); }
+function echapperIcs(t) { return t.replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;"); }
+// Pas d'heure de fin : seule l'heure de début est indiquée.
+$("cal-google").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+  + "&text=" + encodeURIComponent(CONFIG.titreAgenda)
+  + "&dates=" + utc(DEBUT) + "/" + utc(DEBUT)
+  + "&ctz=Europe/Paris"
+  + "&location=" + encodeURIComponent(CONFIG.lieuAgenda)
+  + "&details=" + encodeURIComponent(CONFIG.detailsAgenda);
+$("btn-cal").addEventListener("click", () => {
+  const choix = $("cal-choix");
+  choix.hidden = !choix.hidden;
+  $("btn-cal").setAttribute("aria-expanded", String(!choix.hidden));
+});
+$("cal-ics").addEventListener("click", () => {
   const ics = [
-    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Silver Fever//FR", "CALSCALE:GREGORIAN",
+    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Silver Fever//FR", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    "UID:silver-fever-20270130@anniversaire",
-    "DTSTAMP:" + formatUTC(new Date()),
-    "DTSTART:" + formatUTC(DEBUT),
-    "SUMMARY:" + TITRE_AGENDA,
-    "LOCATION:" + LIEU.replace(/,/g, "\\,"),
-    "DESCRIPTION:" + DETAILS_AGENDA.replace(/,/g, "\\,"),
+    "UID:silver-fever-20270130@heleana",
+    "DTSTAMP:" + utc(new Date()),
+    "DTSTART:" + utc(DEBUT),
+    "SUMMARY:" + echapperIcs(CONFIG.titreAgenda),
+    "LOCATION:" + echapperIcs(CONFIG.lieuAgenda),
+    "DESCRIPTION:" + echapperIcs(CONFIG.detailsAgenda),
     "END:VEVENT", "END:VCALENDAR"
   ].join("\r\n");
   const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
   const a = document.createElement("a");
   a.href = url; a.download = "silver-fever.ics";
   document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
 });
 
-/* ---------- Sondage de venue ---------- */
-const formVenue = $("form-venue");
-const blocNb = $("bloc-nb");
-formVenue.addEventListener("change", (e) => {
-  if (e.target.name === "venue") blocNb.hidden = e.target.value !== "oui";
+/* ---------- Programme : indicateur de défilement sur mobile ---------- */
+(function () {
+  const zone = $("programme-defile"), points = [...$("points").children];
+  zone.addEventListener("scroll", () => {
+    const cartes = zone.children;
+    const pas = cartes[1] ? cartes[1].offsetLeft - cartes[0].offsetLeft : 1;
+    const i = Math.min(points.length - 1, Math.round(zone.scrollLeft / pas));
+    points.forEach((p, k) => p.classList.toggle("actif", k === i));
+  }, { passive: true });
+})();
+
+/* ---------- RSVP ---------- */
+const form = $("form-rsvp"), msgRsvp = $("msg-rsvp"), btnRsvp = $("btn-rsvp");
+if (Date.now() >= new Date(CONFIG.dateLimite)) {
+  $("delai").innerHTML = "La date limite du <b>13 décembre</b> est passée, mais réponds quand même&nbsp;: Héléana préfère tard que jamais.";
+}
+form.addEventListener("change", (e) => {
+  if (e.target.name === "venue") $("si-oui").hidden = e.target.value !== "oui";
 });
 
-// Passé le 15 janvier, on accepte encore les réponses, mais on le dit
-if (Date.now() >= DATE_LIMITE) {
-  $("echeance").textContent = "La date limite du 15 janvier est passée, mais réponds quand même : mieux vaut tard que jamais.";
+function afficherMerci(rep, animer) {
+  form.hidden = true;
+  const titre = $("merci-titre");
+  if (rep.venue) {
+    titre.className = "gros oui";
+    titre.innerHTML = "C'est noté&nbsp;! <span class=\"fx\">Silver Fever, here we come. ✨</span>";
+    $("merci-texte").textContent = "Merci " + rep.prenom + ". Rendez-vous le samedi 30 janvier à 19 h au Surnaturel.";
+  } else {
+    titre.className = "gros chrome-txt";
+    titre.textContent = "Tu vas nous manquer ! On se rattrape très vite. ❤️";
+    $("merci-texte").textContent = "Merci " + rep.prenom + " d'avoir pris le temps de répondre.";
+  }
+  $("merci").hidden = false;
+  if (animer) $("merci").focus({ preventScroll: true });
+}
+$("modifier").addEventListener("click", () => {
+  $("merci").hidden = true;
+  form.hidden = false;
+  msgRsvp.hidden = true;
+  const r = lire("sf-rsvp");
+  if (r) { $("r-prenom").value = r.prenom || ""; $("r-nom").value = r.nom || ""; }
+  $("r-prenom").focus();
+});
+const dejaRepondu = lire("sf-rsvp");
+if (dejaRepondu && dejaRepondu.prenom) afficherMerci(dejaRepondu, false);
+
+// « jean-marc » ou « JEAN-MARC » → « Jean-Marc » ; « de La Tour » reste tel quel
+function joliNom(t) {
+  return t.trim().replace(/\s+/g, " ").split(" ").map((mot) => {
+    if (mot !== mot.toLowerCase() && mot !== mot.toUpperCase()) return mot;
+    return mot.toLowerCase().replace(/(^|[-'’])(\p{L})/gu, (m, sep, l) => sep + l.toUpperCase());
+  }).join(" ");
 }
 
-function montrerDeja(rep) {
-  $("deja-texte").textContent = rep.venue
-    ? "Tu as répondu oui, " + rep.prenom + ". On t'attend en argenté !"
-    : "Tu as répondu non, " + rep.prenom + ". On lèvera une coupe pour toi.";
-  $("deja").hidden = false;
-  formVenue.hidden = true;
+function chargement(btn, actif, texte) {
+  btn.disabled = actif;
+  btn.innerHTML = actif ? '<span class="roue" aria-hidden="true"></span>' + texte : texte;
 }
-$("changer").addEventListener("click", () => {
-  $("deja").hidden = true;
-  formVenue.hidden = false;
-  $("msg-venue").hidden = true;
-  $("btn-venue").before($("msg-venue"));
-  $("v-prenom").focus();
-});
 
-formVenue.addEventListener("submit", async (e) => {
+function notifierParMail(r) {
+  if (!CONFIG.formspreeId) return;
+  fetch("https://formspree.io/f/" + CONFIG.formspreeId, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      _subject: (r.venue ? "✅ OUI · " : "❌ NON · ") + r.prenom + " " + r.nom + " · Silver Fever",
+      "Prénom": r.prenom, "Nom": r.nom,
+      "Réponse": r.venue ? "Oui, évidemment !" : "Ne pourra pas venir",
+      "E-mail": r.email || "(non renseigné)",
+      "Allergies / contraintes": r.allergies || "(aucune)",
+      "Petit mot": r.mot || "(aucun)",
+      "Prénom visible dans la guest list": r.visible ? "oui" : "non"
+    })
+  }).catch(() => {});
+}
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const msg = $("msg-venue");
-  const prenom = $("v-prenom").value.trim();
-  const choix = formVenue.querySelector('input[name="venue"]:checked');
-  if (!prenom) { afficherMessage(msg, "Indique ton prénom pour qu'on sache qui vient.", "erreur"); $("v-prenom").focus(); return; }
-  if (!choix) { afficherMessage(msg, "Choisis oui ou non.", "erreur"); return; }
+  msgRsvp.hidden = true;
+  form.querySelectorAll("[aria-invalid]").forEach((el) => el.removeAttribute("aria-invalid"));
+  if (form.querySelector('[name="site_web"]').value) return;
+
+  const prenom = joliNom($("r-prenom").value), nom = joliNom($("r-nom").value), email = $("r-email").value.trim();
+  const choix = form.querySelector('input[name="venue"]:checked');
+  const erreur = (el, texte) => { if (el) { el.setAttribute("aria-invalid", "true"); el.focus(); } montrerMessage(msgRsvp, texte, "erreur"); };
+  if (!prenom) return erreur($("r-prenom"), "Indique ton prénom.");
+  if (!nom) return erreur($("r-nom"), "Indique ton nom, pour qu'Héléana sache qui répond.");
+  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return erreur($("r-email"), "Cette adresse e-mail semble incomplète. Corrige-la ou laisse le champ vide.");
+  if (!choix) return erreur(null, "Dis-nous si tu seras de la partie : oui ou non.");
+  const codeSaisi = !$("bloc-code").hidden ? $("r-code").value.trim() : code;
+  if (!codeSaisi) { $("bloc-code").hidden = false; return erreur($("r-code"), "Entre le code d'invitation reçu avec le lien."); }
 
   const venue = choix.value === "oui";
-  const nb = venue ? Number($("v-nb").value) : 0;
-  const champs = {
-    _subject: (venue ? "✅ OUI" : "❌ NON") + " · " + prenom + (venue && nb > 1 ? " (" + nb + " personnes)" : "") + " · Silver Fever",
-    "Formulaire": "Venue",
-    "Prénom": prenom,
-    "Réponse": venue ? "Oui" : "Non",
-    "Nombre de personnes": nb,
-    "Petit mot": $("v-mot").value.trim() || "(aucun)"
+  const r = {
+    prenom, nom, email: email || null, venue,
+    allergies: venue ? $("r-allergies").value.trim() || null : null,
+    mot: $("r-mot").value.trim() || null,
+    visible: venue && $("r-visible").checked
   };
 
-  const btn = $("btn-venue");
-  btn.disabled = true; btn.textContent = "Envoi…";
+  chargement(btnRsvp, true, "Envoi…");
   try {
-    await envoyer(champs, formVenue);
-    ecrire("sf-reponse", { prenom, venue });
-    formVenue.reset(); blocNb.hidden = true;
-    montrerDeja({ prenom, venue });
-    afficherMessage(msg, venue ? "Noté ! Rendez-vous le 30 janvier." : "Bien reçu, tu vas nous manquer.", "ok");
-    $("deja").after(msg);
+    await rpc("sf_repondre", {
+      p_code: codeSaisi, p_prenom: r.prenom, p_nom: r.nom, p_email: r.email, p_venue: r.venue,
+      p_allergies: r.allergies, p_mot: r.mot, p_visible: r.visible
+    });
+    if (codeSaisi !== code) { code = codeSaisi; ecrire("sf-code", code); $("bloc-code").hidden = true; chargerPublic(); }
+    ecrire("sf-rsvp", { prenom: r.prenom, nom: r.nom, venue: r.venue });
+    notifierParMail(r);
+    form.reset(); $("si-oui").hidden = true;
+    afficherMerci(r, true);
+    chargerPublic();
   } catch (err) {
-    afficherMessage(msg, texteErreur(err), "erreur");
+    const textes = {
+      non_configure: "Le site n'est pas encore relié à sa base de données : ta réponse n'a pas été enregistrée. Préviens Héléana directement.",
+      code_invalide: "Ce code d'invitation n'est pas le bon. Vérifie-le dans le message d'invitation.",
+      email: "Cette adresse e-mail n'est pas valide. Corrige-la ou laisse le champ vide.",
+      trop_long: "Un des champs est trop long. Raccourcis-le un peu et réessaie.",
+      plein: "Le formulaire n'accepte plus de réponses pour le moment. Préviens Héléana directement.",
+      reseau: "Ta réponse n'a pas pu partir : vérifie ta connexion et réessaie.",
+      serveur: "Ta réponse n'a pas pu être enregistrée. Réessaie dans quelques minutes ; si ça continue, préviens Héléana directement."
+    };
+    if (err.code === "code_invalide") { $("bloc-code").hidden = false; $("r-code").setAttribute("aria-invalid", "true"); effacer("sf-code"); code = null; }
+    montrerMessage(msgRsvp, textes[err.code] || textes.serveur, "erreur");
   } finally {
-    btn.disabled = false; btn.textContent = "Envoyer ma réponse";
+    chargement(btnRsvp, false, "Envoyer ma réponse");
   }
 });
 
-const dejaRepondu = lire("sf-reponse");
-if (dejaRepondu && dejaRepondu.prenom) montrerDeja(dejaRepondu);
+/* ---------- Playlist ---------- */
+(function playlist() {
+  const url = (CONFIG.playlistUrl || "").trim();
+  if (!url) { $("pl-bientot").hidden = false; return; }
+  const ecouter = $("btn-ecouter");
+  ecouter.href = url; ecouter.hidden = false;
+  const m = url.match(/open\.spotify\.com\/(?:intl-[a-z]+\/)?(playlist|album)\/([A-Za-z0-9]+)/);
+  if (m) {
+    const btn = $("btn-lecteur");
+    btn.hidden = false;
+    btn.addEventListener("click", () => {
+      const lecteur = $("lecteur");
+      if (!lecteur.firstChild) {
+        const f = document.createElement("iframe");
+        f.src = "https://open.spotify.com/embed/" + m[1] + "/" + m[2] + "?theme=0";
+        f.title = "Lecteur Spotify de la playlist Silver Fever";
+        f.loading = "lazy";
+        f.allow = "clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+        lecteur.append(f);
+      }
+      lecteur.hidden = !lecteur.hidden;
+      btn.textContent = lecteur.hidden ? "Afficher le lecteur" : "Masquer le lecteur";
+    });
+  }
+})();
 
-/* ---------- Playlist ----------
-   Les sons sont rangés dans Supabase, et tout le monde voit la liste.
-   Si Supabase ne répond pas (projet en pause, par exemple), le son part
-   par mail via Formspree pour ne pas être perdu. */
-async function supabase(chemin, options = {}) {
-  const rep = await fetch(SUPABASE_URL + "/rest/v1/" + chemin, {
-    ...options,
-    headers: {
-      apikey: SUPABASE_ANON_KEY,
-      // Ancienne clé « anon » (eyJ…) : elle va aussi dans Authorization.
-      // Nouvelle clé « sb_publishable_… » : apikey suffit.
-      ...(SUPABASE_ANON_KEY.startsWith("eyJ") ? { Authorization: "Bearer " + SUPABASE_ANON_KEY } : {}),
-      "Content-Type": "application/json",
-      ...(options.headers || {})
-    }
-  });
-  if (!rep.ok) throw new Error("HTTP " + rep.status);
-  const txt = await rep.text();
-  return txt ? JSON.parse(txt) : null;
-}
-
-function afficherPlaylist(sons) {
-  const liste = $("playlist");
+function afficherSons(sons) {
+  const liste = $("liste-sons");
   liste.innerHTML = "";
-  $("playlist-vide").hidden = sons.length > 0;
-  $("playlist-titre").textContent = sons.length
-    ? "La playlist de la soirée · " + sons.length + (sons.length > 1 ? " sons" : " son")
-    : "La playlist de la soirée";
+  $("sons-vide").hidden = sons.length > 0;
+  $("sons-titre").textContent = sons.length ? "Les morceaux proposés · " + sons.length : "Les morceaux proposés";
   sons.forEach((s, i) => {
     const li = document.createElement("li");
     const n = document.createElement("span"); n.className = "n"; n.textContent = String(sons.length - i).padStart(2, "0");
-    const ligne = document.createElement("span");
-    const t = document.createElement("span"); t.className = "titre"; t.textContent = s.titre;
-    ligne.append(t);
-    if (s.artiste) {
-      const a = document.createElement("span"); a.className = "artiste"; a.textContent = " · " + s.artiste;
-      ligne.append(a);
-    }
-    li.append(n, ligne);
-    if (s.propose_par) {
-      const p = document.createElement("span"); p.className = "par"; p.textContent = "proposé par " + s.propose_par;
-      li.append(p);
-    }
+    const l = document.createElement("span");
+    const t = document.createElement("span"); t.className = "t"; t.textContent = s.titre; l.append(t);
+    if (s.artiste) { const a = document.createElement("span"); a.className = "a"; a.textContent = " · " + s.artiste; l.append(a); }
+    li.append(n, l);
+    if (s.par) { const p = document.createElement("span"); p.className = "p"; p.textContent = "proposé par " + s.par; li.append(p); }
     liste.append(li);
   });
 }
 
-async function chargerPlaylist() {
-  try {
-    const sons = await supabase("sf_sons?select=titre,artiste,propose_par,cree_le&order=cree_le.desc&limit=300");
-    afficherPlaylist(sons || []);
-  } catch (e) {
-    $("playlist-vide").hidden = false;
-    $("playlist-vide").textContent = "La playlist ne s'affiche pas pour l'instant, mais tu peux quand même proposer ton son.";
-  }
-}
-
+const prenomSon = lire("sf-prenom-son");
+if (prenomSon) $("s-par").value = prenomSon;
 $("form-son").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const form = e.currentTarget;
-  const msg = $("msg-son");
+  const f = e.currentTarget, msg = $("msg-son"), btn = $("btn-son");
+  msg.hidden = true;
+  if (f.querySelector('[name="site_web"]').value) return;
   const titre = $("s-titre").value.trim();
-  if (!titre) { afficherMessage(msg, "Indique au moins le titre du morceau.", "erreur"); $("s-titre").focus(); return; }
-  const piege = form.querySelector('input[name="_gotcha"]');
-  if (piege && piege.value) return;
-  const artiste = $("s-artiste").value.trim();
-  const par = $("s-prenom").value.trim();
-
-  const btn = $("btn-son");
-  btn.disabled = true; btn.textContent = "Ajout…";
+  if (!titre) { $("s-titre").setAttribute("aria-invalid", "true"); $("s-titre").focus(); return montrerMessage(msg, "Indique au moins le titre du morceau.", "erreur"); }
+  $("s-titre").removeAttribute("aria-invalid");
+  if (!code) return montrerMessage(msg, "Entre d'abord ton code d'invitation, dans la partie réponse ou guest list.", "erreur");
+  const artiste = $("s-artiste").value.trim(), par = $("s-par").value.trim();
+  chargement(btn, true, "Ajout…");
   try {
-    await supabase("sf_sons", {
-      method: "POST",
-      headers: { Prefer: "return=minimal" },
-      body: JSON.stringify({ titre, artiste: artiste || null, propose_par: par || null })
-    });
-    afficherMessage(msg, "Ajouté à la playlist !", "ok");
-    termine();
-    chargerPlaylist();
-  } catch (errBase) {
-    // Plan B : le son part par mail
-    try {
-      await envoyer({
-        _subject: "🎵 " + titre + (artiste ? " · " + artiste : "") + " · Silver Fever",
-        "Formulaire": "Playlist (liste partagée indisponible)",
-        "Titre": titre,
-        "Artiste": artiste || "(non précisé)",
-        "Proposé par": par || "(anonyme)"
-      }, form);
-      afficherMessage(msg, "Envoyé ! La liste partagée ne répond pas pour l'instant, mais ton son est bien arrivé.", "ok");
-      termine();
-    } catch (err) {
-      afficherMessage(msg, ERREUR_RESEAU, "erreur");
-    }
-  } finally {
-    btn.disabled = false; btn.textContent = "Ajouter à la playlist";
-  }
-
-  function termine() {
+    await rpc("sf_proposer_son", { p_code: code, p_titre: titre, p_artiste: artiste || null, p_par: par || null });
     if (par) ecrire("sf-prenom-son", par);
     $("s-titre").value = ""; $("s-artiste").value = "";
+    montrerMessage(msg, "Ajouté ! Merci pour la bande-son.", "info");
+    chargerPublic();
+  } catch (err) {
+    const textes = {
+      non_configure: "Le site n'est pas encore relié à sa base de données : le morceau n'a pas été enregistré.",
+      code_invalide: "Ton code d'invitation n'est pas reconnu. Entre-le à nouveau.",
+      plein: "La liste est pleine ! Envoie ta suggestion directement à Héléana.",
+      trop_long: "Le titre ou l'artiste est trop long.",
+      reseau: "Le morceau n'a pas pu partir : vérifie ta connexion et réessaie."
+    };
+    montrerMessage(msg, textes[err.code] || "Le morceau n'a pas pu être enregistré. Réessaie dans quelques minutes.", "erreur");
+  } finally {
+    chargement(btn, false, "Ajouter à la liste");
   }
 });
 
-const prenomSon = lire("sf-prenom-son");
-if (prenomSon) $("s-prenom").value = prenomSon;
-chargerPlaylist();
+/* ---------- Données publiques : guest list + playlist ---------- */
+function compterJusqua(el, cible) {
+  if (reduit) { el.textContent = cible; return; }
+  const duree = 1200, t0 = performance.now();
+  (function pas(t) {
+    const k = Math.min(1, (t - t0) / duree);
+    el.textContent = Math.round(cible * (1 - Math.pow(1 - k, 3)));
+    if (k < 1) requestAnimationFrame(pas);
+  })(t0);
+}
 
-/* ---------- Reflets sur le fond ---------- */
-(function reflets() {
-  const zone = $("reflets");
-  let graine = 7;
-  const alea = () => (graine = (graine * 16807) % 2147483647) / 2147483647;
-  for (let i = 0; i < 70; i++) {
-    const s = document.createElement("span");
-    const taille = 2 + alea() * 5;
-    s.style.width = s.style.height = taille + "px";
-    s.style.left = (alea() * 100) + "%";
-    s.style.top = (alea() * 100) + "%";
-    s.style.opacity = (.15 + alea() * .45).toFixed(2);
-    zone.append(s);
+function demanderCode(conteneur) {
+  if (conteneur.querySelector(".code-boite")) return;
+  const frag = $("tpl-code").content.cloneNode(true);
+  const boite = frag.querySelector(".code-boite");
+  const f = boite.querySelector("form"), inp = boite.querySelector("input");
+  const id = "code-" + (conteneur.closest("section") || conteneur).id;
+  inp.id = id; boite.querySelector("label").htmlFor = id;
+  f.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = inp.value.trim();
+    if (!v) { inp.focus(); return; }
+    code = v; ecrire("sf-code", code);
+    chargerPublic(true);
+  });
+  conteneur.append(boite);
+}
+
+let compteurAnime = false;
+async function chargerPublic(depuisSaisie) {
+  const guestsWrap = $("guests").querySelector(".wrap");
+  const info = $("guests-info");
+  document.querySelectorAll(".code-boite").forEach((b) => b.remove());
+
+  if (!baseConfiguree) {
+    info.textContent = "La guest list s'affichera ici une fois le site relié à sa base de données.";
+    $("sons-vide").textContent = "La liste des morceaux s'affichera ici une fois le site relié à sa base de données.";
+    return;
   }
-})();
+  if (!code) {
+    $("bloc-code").hidden = false;
+    info.textContent = "";
+    demanderCode(guestsWrap);
+    return;
+  }
+  try {
+    donnees = await rpc("sf_public", { p_code: code });
+  } catch (e) {
+    info.textContent = "La guest list n'est pas disponible pour le moment. Recharge la page dans un instant.";
+    return;
+  }
+  if (!donnees || !donnees.code_ok) {
+    effacer("sf-code"); code = null; codeValide = false;
+    $("bloc-code").hidden = false;
+    demanderCode(guestsWrap);
+    if (depuisSaisie) {
+      const m = guestsWrap.querySelector(".code-boite .message");
+      if (m) { m.className = "message erreur"; m.textContent = "Ce code n'est pas le bon. Vérifie-le dans le message d'invitation."; }
+    }
+    return;
+  }
+  codeValide = true;
+  $("bloc-code").hidden = true;
 
-/* ---------- Boule à facettes ---------- */
+  // Guest list selon le choix de l'organisatrice
+  const masque = donnees.mode === "masque";
+  $("guests").hidden = masque;
+  document.querySelectorAll(".lien-guests").forEach((l) => l.hidden = masque);
+  $("bloc-visible").hidden = masque;
+  if (!masque) {
+    const nb = donnees.confirmes || 0;
+    $("bloc-compteur").hidden = false;
+    $("legende-confirmes").textContent = nb > 1 ? "invités confirmés" : "invité confirmé";
+    const el = $("nb-confirmes");
+    if (!compteurAnime && nb > 0) {
+      compteurAnime = true;
+      if ("IntersectionObserver" in window) {
+        const o = new IntersectionObserver((en) => { if (en[0].isIntersecting) { compterJusqua(el, nb); o.disconnect(); } });
+        o.observe(el);
+      } else { el.textContent = nb; }
+    } else { el.textContent = nb; }
+
+    const pastilles = $("pastilles");
+    pastilles.innerHTML = "";
+    const prenoms = donnees.mode === "prenoms" ? (donnees.prenoms || []) : [];
+    prenoms.forEach((p) => { const li = document.createElement("li"); li.textContent = p; pastilles.append(li); });
+    pastilles.hidden = prenoms.length === 0;
+    info.textContent = nb === 0 ? "Personne n'a encore répondu. À toi d'ouvrir le bal !"
+      : donnees.mode === "prenoms" && prenoms.length < nb ? "Seuls les prénoms des invités qui l'ont accepté apparaissent ici." : "";
+  }
+  afficherSons(donnees.sons || []);
+}
+chargerPublic();
+
+/* ---------- Boule à facettes de l'accueil ---------- */
 (function boule() {
-  const cv = $("boule");
-  const ctx = cv.getContext("2d");
-  let L, H, R, cx, cy;
-
+  const cv = $("boule"), ctx = cv.getContext("2d");
+  let L, H, R, cx, cy, visible = true, raf = null;
   function dimension() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const r = cv.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
     L = r.width; H = r.height;
     cv.width = Math.round(L * dpr); cv.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    R = L * 0.4; cx = L / 2; cy = H - R - L * 0.06;
+    R = L * 0.36; cx = L / 2; cy = H * 0.52;
   }
-
-  // Facettes : bandes de latitude, nombre de carreaux selon la largeur de la bande
-  const BANDES = 16;
-  const facettes = [];
+  const BANDES = 18, facettes = [];
   for (let b = 0; b < BANDES; b++) {
-    const lat0 = -Math.PI / 2 + (b / BANDES) * Math.PI;
-    const lat1 = -Math.PI / 2 + ((b + 1) / BANDES) * Math.PI;
-    const latM = (lat0 + lat1) / 2;
-    const n = Math.max(6, Math.round(BANDES * 2 * Math.cos(latM)));
-    for (let k = 0; k < n; k++) {
-      facettes.push({ lat0, lat1, lon0: (k / n) * 2 * Math.PI, lon1: ((k + 1) / n) * 2 * Math.PI, phase: Math.random() * 1000 });
-    }
+    const lat0 = -Math.PI / 2 + (b / BANDES) * Math.PI, lat1 = -Math.PI / 2 + ((b + 1) / BANDES) * Math.PI;
+    const n = Math.max(6, Math.round(BANDES * 2 * Math.cos((lat0 + lat1) / 2)));
+    for (let k = 0; k < n; k++) facettes.push({ lat0, lat1, lon0: (k / n) * 2 * Math.PI, lon1: ((k + 1) / n) * 2 * Math.PI, phase: Math.random() * 1000, rose: Math.random() < 0.035 });
   }
-
-  function point(lat, lon) {
-    return [cx + R * Math.cos(lat) * Math.sin(lon), cy - R * Math.sin(lat), Math.cos(lat) * Math.cos(lon)];
-  }
-
+  const pt = (lat, lon) => [cx + R * Math.cos(lat) * Math.sin(lon), cy - R * Math.sin(lat)];
   function dessiner(t) {
     ctx.clearRect(0, 0, L, H);
-    const rot = reduitMouvement ? 0.6 : t * 0.00025;
-
-    // fil
-    ctx.strokeStyle = "rgba(185,191,204,.55)";
-    ctx.lineWidth = 1;
+    const rot = reduit ? 0.6 : t * 0.00018;
+    ctx.strokeStyle = "rgba(192,192,192,.5)"; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, cy - R); ctx.stroke();
-
-    // halo
-    const halo = ctx.createRadialGradient(cx, cy, R * 0.6, cx, cy, R * 1.22);
-    halo.addColorStop(0, "rgba(200,205,255,.16)");
-    halo.addColorStop(1, "rgba(200,205,255,0)");
-    ctx.fillStyle = halo;
-    ctx.beginPath(); ctx.arc(cx, cy, R * 1.22, 0, Math.PI * 2); ctx.fill();
-
-    // fond sombre de la sphère, visible entre les facettes
-    ctx.fillStyle = "#1a1d2b";
-    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
-
-    const etincelles = [];
+    ctx.fillStyle = "#101010"; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    const etoiles = [];
     for (const f of facettes) {
-      const lonM = (f.lon0 + f.lon1) / 2 + rot;
-      const latM = (f.lat0 + f.lat1) / 2;
+      const lonM = (f.lon0 + f.lon1) / 2 + rot, latM = (f.lat0 + f.lat1) / 2;
       const z = Math.cos(latM) * Math.cos(lonM);
       if (z <= 0.02) continue;
-      const g = 0.012; // joint entre les carreaux
-      const p1 = point(f.lat0 + g, f.lon0 + rot + g);
-      const p2 = point(f.lat0 + g, f.lon1 + rot - g);
-      const p3 = point(f.lat1 - g, f.lon1 + rot - g);
-      const p4 = point(f.lat1 - g, f.lon0 + rot + g);
-
-      // lumière venant d'en haut à gauche
-      const nx = Math.cos(latM) * Math.sin(lonM), ny = Math.sin(latM), nz = z;
-      const lum = Math.max(0, -0.45 * nx + 0.55 * ny + 0.7 * nz);
-      const scint = reduitMouvement ? 0 : Math.pow(Math.max(0, Math.sin(t * 0.004 + f.phase)), 40);
-      let v = 70 + lum * 150 + scint * 120;
-      v = Math.min(255, v);
-      const bleu = Math.min(255, v + 14);
-      ctx.fillStyle = "rgb(" + (v | 0) + "," + ((v + 4) | 0) + "," + (bleu | 0) + ")";
-      ctx.beginPath();
-      ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.lineTo(p3[0], p3[1]); ctx.lineTo(p4[0], p4[1]);
-      ctx.closePath(); ctx.fill();
-      if (scint > 0.6) etincelles.push([(p1[0] + p3[0]) / 2, (p1[1] + p3[1]) / 2, scint]);
+      const g = 0.012;
+      const p1 = pt(f.lat0 + g, f.lon0 + rot + g), p2 = pt(f.lat0 + g, f.lon1 + rot - g), p3 = pt(f.lat1 - g, f.lon1 + rot - g), p4 = pt(f.lat1 - g, f.lon0 + rot + g);
+      const nx = Math.cos(latM) * Math.sin(lonM), ny = Math.sin(latM);
+      const lum = Math.max(0, -0.4 * nx + 0.55 * ny + 0.73 * z);
+      const sc = reduit ? 0 : Math.pow(Math.max(0, Math.sin(t * 0.0035 + f.phase)), 40);
+      const v = Math.min(255, 55 + lum * 160 + sc * 130) | 0;
+      ctx.fillStyle = f.rose && lum > 0.5 ? "rgba(255,40,215," + (0.55 + sc * 0.45).toFixed(2) + ")" : "rgb(" + v + "," + v + "," + v + ")";
+      ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.lineTo(p3[0], p3[1]); ctx.lineTo(p4[0], p4[1]); ctx.closePath(); ctx.fill();
+      if (sc > 0.6) etoiles.push([(p1[0] + p3[0]) / 2, (p1[1] + p3[1]) / 2, sc]);
     }
-
-    // ombre de bord pour donner le volume
-    const ombre = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.2, cx, cy, R);
-    ombre.addColorStop(0, "rgba(11,13,22,0)");
-    ombre.addColorStop(1, "rgba(11,13,22,.55)");
-    ctx.fillStyle = ombre;
-    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
-
-    // étoiles sur les facettes qui accrochent la lumière
-    for (const [x, y, a] of etincelles) {
-      const l = R * 0.16 * a;
-      ctx.strokeStyle = "rgba(255,255,255," + (a * 0.9).toFixed(2) + ")";
-      ctx.lineWidth = 1.2;
-      ctx.beginPath();
-      ctx.moveTo(x - l, y); ctx.lineTo(x + l, y);
-      ctx.moveTo(x, y - l); ctx.lineTo(x, y + l);
-      ctx.stroke();
+    const o = ctx.createRadialGradient(cx - R * .35, cy - R * .4, R * .2, cx, cy, R);
+    o.addColorStop(0, "rgba(8,8,8,0)"); o.addColorStop(1, "rgba(8,8,8,.6)");
+    ctx.fillStyle = o; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    for (const [x, y, a] of etoiles) {
+      const l = R * 0.14 * a;
+      ctx.strokeStyle = "rgba(255,255,255," + (a * .9).toFixed(2) + ")"; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(x - l, y); ctx.lineTo(x + l, y); ctx.moveTo(x, y - l); ctx.lineTo(x, y + l); ctx.stroke();
     }
   }
-
+  function boucle(t) { dessiner(t); raf = visible ? requestAnimationFrame(boucle) : null; }
   dimension();
-  window.addEventListener("resize", dimension);
-  if (reduitMouvement) { dessiner(0); return; }
-  (function boucle(t) { dessiner(t); requestAnimationFrame(boucle); })(0);
+  window.addEventListener("resize", () => { dimension(); if (reduit || !raf) dessiner(performance.now()); });
+  if (reduit) { dessiner(0); return; }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver((en) => { visible = en[0].isIntersecting; if (visible && !raf) raf = requestAnimationFrame(boucle); }).observe(cv);
+  }
+  raf = requestAnimationFrame(boucle);
 })();
 </script>
 </body>

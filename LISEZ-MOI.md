@@ -1,73 +1,123 @@
-# Silver Fever, le site des 30 ans
+# SILVER FEVER · Héléana's 30th Birthday
 
-Samedi 30 janvier 2027, 19h30, Expérience Park, Wittenheim.
-Apéro dînatoire sur place. Réponses attendues avant le 15 janvier.
+Samedi 30 janvier 2027, 19 h · Bar Le Surnaturel, 6 rue Poincaré, Mulhouse.
+Réponses attendues avant le 13 décembre 2026.
 
-| Fichier | À quoi il sert |
+## Ce que contient ce dépôt
+
+| Fichier | Rôle |
 |---|---|
-| `index.html` | Tout le site, en un seul fichier (style et script compris) |
-| `silver-fever.sql` | Crée la table de la playlist dans Supabase |
+| `index.html` | Le site des invités (tout en un seul fichier) |
+| `admin.html` | L'espace privé d'Héléana : réponses, liste des invités, réglages |
+| `silver-fever.sql` | La base de données à installer dans Supabase |
+| `og.jpg` | L'image d'aperçu affichée quand on partage le lien (WhatsApp, SMS…) |
+| `robots.txt` | Demande aux moteurs de recherche de ne pas référencer le site |
 
-Deux circuits :
-- **Le sondage** (oui / non) part **par mail** grâce à Formspree.
-  Ton amie reçoit chaque réponse, les invités ne voient pas qui vient.
-- **La playlist** est rangée dans **Supabase** (projet dédié
-  `rpsysgwdxifeneaxpkkx`, sans lien avec l'escape game, table `sf_sons`) : tout le monde voit la liste des sons proposés.
-  Si Supabase ne répond pas, le son part par mail à la place, pour ne
-  pas être perdu.
+Comment ça marche :
+- **Le site** est hébergé gratuitement par GitHub Pages, en HTTPS.
+- **Les réponses** sont enregistrées dans Supabase (projet `silver-fever`).
+  Les invités ne peuvent rien y lire : ils passent par trois fonctions qui
+  vérifient le code d'invitation et ne renvoient jamais de nom de famille,
+  d'e-mail, d'allergie, de petit mot ni de réponse négative.
+- **Héléana** consulte tout sur `admin.html`, après connexion par e-mail et
+  mot de passe. En plus, chaque réponse lui est envoyée par mail (Formspree).
 
-## Mise en ligne, dans l'ordre
+---
 
-1. **Formspree.** Fait : le formulaire `https://formspree.io/f/xwllberr`
-   est branché (`FORMSPREE_ID` en haut du script d'`index.html`). Les
-   mails arrivent à l'adresse du compte Formspree qui a créé ce formulaire.
-2. **(rien à faire)**
-3. **La playlist.** Le site est branché sur le projet Supabase dédié
-   (adresse et clé publique déjà dans `index.html`). Il reste seulement
-   à vérifier que la table existe : Table Editor > `sf_sons`. Sinon,
-   SQL Editor, coller tout `silver-fever.sql` et cliquer sur Run.
-   Sans la table, la playlist ne s'affiche pas et chaque son part par
-   mail (plan B).
-4. **Le dépôt.** Fait : c'est ce dépôt.
-5. **La publication.** Dans le dépôt : Settings > Pages > Source
-   « Deploy from a branch », branche `main`, dossier `/ (root)`, Save.
-   Le site est en ligne une à deux minutes plus tard à l'adresse
-   `https://evadigiu.github.io/silver-fever/`.
-6. **Le test.** Depuis le site en ligne, répondre une fois au sondage
-   (le mail doit arriver, vérifier les spams ; le tout premier envoi
-   peut demander une confirmation dans Formspree), puis proposer un son
-   (il doit apparaître dans la liste). Effacer ensuite le son de test
-   dans Supabase > Table Editor > sf_sons.
+## Mise en ligne (une seule fois)
 
-## Ce que reçoit ton amie
+### 1. Installer la base de données
+Supabase > projet `silver-fever` > **SQL Editor** > New query : coller tout
+`silver-fever.sql`, cliquer sur **Run**. Le message attendu est « Success ».
+Le script peut être relancé sans risque.
 
-Un mail par envoi, avec un objet lisible d'un coup d'œil :
+### 2. Créer le compte d'Héléana
+1. Supabase > **Authentication** > **Users** > **Add user** > *Create new user* :
+   son e-mail, un mot de passe solide, cocher **Auto Confirm User**.
+2. SQL Editor, lancer cette ligne avec son adresse :
+   `insert into public.sf_admins (email) values (lower('son@adresse.fr'));`
+3. Authentication > **Sign In / Providers** : désactiver
+   **Allow new users to sign up**.
 
-- `✅ OUI · Julie M (2 personnes) · Silver Fever`
-- `❌ NON · Thomas · Silver Fever`
-- `🎵 Dancing Queen · ABBA · Silver Fever` (seulement si la liste partagée
-  était indisponible au moment de l'envoi)
+### 3. Activer le site
+Sur GitHub, dépôt `silver-fever` > **Settings** > **Pages** :
+Source « Deploy from a branch », branche `main`, dossier `/ (root)`, **Save**.
+Le site est en ligne en une à deux minutes sur
+`https://evadigiu.github.io/silver-fever/`.
 
-Toutes les réponses restent aussi consultables dans le tableau de bord
-Formspree, et peuvent s'y exporter en tableau.
+### 4. Changer le code d'invitation (important)
+Le code de départ, `SILVER30`, est écrit dans `silver-fever.sql`, qui est
+visible publiquement sur GitHub. Avant d'envoyer le lien :
+ouvrir `https://evadigiu.github.io/silver-fever/admin.html`, se connecter,
+**Réglages du site** > Code d'invitation > en choisir un nouveau
+(ex. `DISCO-HEL-7Q`) > **Enregistrer**.
 
-## À surveiller
+### 5. Ajouter la liste des invités
+Dans `admin.html` > **Ajouter des invités** : un invité par ligne, prénom puis
+nom. C'est ce qui permet de voir **qui n'a pas encore répondu**.
 
-- **Le quota gratuit de Formspree** est limité (de l'ordre de 50 envois
-  par mois, à vérifier sur leur page de tarifs). Seules les réponses au
-  sondage le consomment en temps normal.
-- **Supabase gratuit se met en pause après 7 jours sans activité.** La
-  playlist cesse alors de s'afficher et les sons partent par mail. Rien
-  n'est perdu : un clic sur « Restore project » dans Supabase relance
-  tout. Y penser en envoyant l'invitation et la semaine avant la soirée.
-- **Retirer un son** (doublon, blague) : Supabase > Table Editor > sf_sons,
-  ou la requête en bas de `silver-fever.sql`.
-- **Une personne qui change d'avis** envoie une nouvelle réponse : c'est
-  le mail le plus récent qui compte.
+### 6. Tester, puis envoyer
+Copier le **lien à envoyer aux invités** (dans les réglages). Il contient le
+code : les invités n'ont rien à taper. Faire une réponse de test depuis un
+téléphone, vérifier qu'elle apparaît dans `admin.html` et que le mail arrive,
+puis la supprimer.
 
-## Ce qui se règle facilement
+---
 
-En haut du script d'`index.html` :
-- `DEBUT` : la date et l'heure, utilisées par le compte à rebours et l'agenda.
-- `DATE_LIMITE` : après cette date, le sondage reste ouvert mais signale
-  que la date est passée.
+## Au quotidien
+
+**Consulter les réponses** : `admin.html`. Les tuiles en haut (Viennent, Ne
+viennent pas, Sans réponse, Hors liste) filtrent la liste d'un clic. Filtres
+« Allergies » et « Petits mots » pour la logistique. Bouton **Exporter (CSV)**
+pour ouvrir le tout dans Excel.
+
+**« Hors liste »** = quelqu'un a répondu avec un nom qui ne correspond à
+personne de la liste (surnom, faute de frappe, +1). Le bouton « Ajouter à la
+liste » le rattache. Les accents, majuscules et tirets sont ignorés dans la
+comparaison : « jean marc muller » = « Jean-Marc Müller ».
+
+**Changer d'avis** : un invité qui répond à nouveau avec les mêmes prénom et
+nom remplace sa réponse précédente.
+
+**Guest list publique** (réglages) : nombre seul (par défaut), nombre +
+prénoms des invités qui ont coché l'accord, ou section masquée.
+
+**Connecter la playlist** : dans `index.html`, en haut du script, remplir
+`playlistUrl` avec le lien de partage de la playlist (Spotify, Deezer, Apple
+Music…). Le bouton « Écouter la playlist » apparaît alors ; pour un lien
+Spotify, un lecteur intégré s'ajoute aussi (il ne démarre jamais tout seul).
+Tant que le lien est vide, le site affiche « La playlist officielle arrive
+bientôt » et les invités peuvent proposer des morceaux.
+
+**Modifier un texte** : tous les textes sont dans `index.html`, lisibles en
+clair. Les dates, l'adresse de l'agenda et les liens sont regroupés en haut
+du script (`const CONFIG`). Après modification sur GitHub, le site se met à
+jour en une à deux minutes.
+
+**Mails de notification** : `formspreeId` dans `CONFIG`. Mettre `""` pour ne
+plus en recevoir. Le quota gratuit de Formspree est limité (autour de 50
+envois par mois) : au-delà, les mails s'arrêtent, mais les réponses restent
+bien enregistrées dans Supabase.
+
+---
+
+## Confidentialité : ce qui est protégé, et ce qui ne l'est pas
+
+- Protégé : les réponses, e-mails, allergies et petits mots ne sont lisibles
+  que depuis `admin.html` par un compte déclaré dans `sf_admins`.
+- Protégé : sans le bon code, personne ne peut répondre, proposer un son ni
+  voir la guest list. Le code bloque aussi les robots.
+- **Pas protégé** : les textes du site (date, lieu, adresse) sont visibles par
+  toute personne qui a le lien, comme sur un carton d'invitation. GitHub
+  Pages ne permet pas de mettre un mot de passe sur la page elle-même. Le
+  site demande aux moteurs de recherche de ne pas le référencer.
+- Une personne qui connaît le code et le nom exact d'un invité pourrait
+  modifier sa réponse. Dans un cercle de proches, le risque est faible.
+
+**Supabase gratuit se met en pause après 7 jours sans visite.** Le site
+affiche alors un message d'erreur clair au moment de répondre, et rien n'est
+perdu : Supabase > projet > **Restore project**. Y jeter un œil au moment de
+l'envoi des invitations et la semaine du 13 décembre.
+
+**Après la fête** : effacer les données au plus tard fin février 2027
+(bouton en bas d'`admin.html`).
