@@ -93,6 +93,11 @@ create table if not exists public.sf_sons (
   cree_le      timestamptz not null default now()
 );
 
+-- Chaque invité propose deux morceaux : « un classique indispensable »
+-- et « celui qui met tout le monde d'accord sur le dancefloor ».
+alter table public.sf_sons add column if not exists categorie text
+  check (categorie is null or categorie in ('classique', 'dancefloor'));
+
 
 -- ---------- 3. Verrouillage ----------
 
@@ -191,7 +196,7 @@ begin
                   from sf_reponses where venue and visible
                 ), '[]'::json) else '[]'::json end,
     'sons', coalesce((
-      select json_agg(json_build_object('titre', titre, 'artiste', artiste, 'par', propose_par) order by cree_le desc)
+      select json_agg(json_build_object('titre', titre, 'artiste', artiste, 'par', propose_par, 'categorie', categorie) order by cree_le desc)
       from (select * from sf_sons order by cree_le desc limit 300) s
     ), '[]'::json)
   );
@@ -243,8 +248,15 @@ $$;
 revoke all on function public.sf_repondre(text, text, text, text, boolean, text, text, boolean) from public;
 grant execute on function public.sf_repondre(text, text, text, text, boolean, text, text, boolean) to anon, authenticated;
 
--- Ajoute un son à la playlist
-create or replace function public.sf_proposer_son(p_code text, p_titre text, p_artiste text, p_par text)
+-- Ancienne fonction (un seul morceau) : remplacée par sf_proposer_duo
+drop function if exists public.sf_proposer_son(text, text, text, text);
+
+-- Ajoute les deux morceaux d'un invité, d'un coup
+create or replace function public.sf_proposer_duo(
+  p_code text, p_par text,
+  p_classique_titre text, p_classique_artiste text,
+  p_dance_titre text, p_dance_artiste text
+)
 returns json
 language plpgsql
 volatile
@@ -258,13 +270,14 @@ begin
   if (select count(*) from sf_sons) >= 400 then
     raise exception 'playlist_pleine' using errcode = 'P0001';
   end if;
-  insert into sf_sons (titre, artiste, propose_par)
-  values (trim(p_titre), nullif(trim(coalesce(p_artiste, '')), ''), nullif(trim(coalesce(p_par, '')), ''));
+  insert into sf_sons (titre, artiste, propose_par, categorie) values
+    (trim(p_classique_titre), nullif(trim(coalesce(p_classique_artiste, '')), ''), nullif(trim(coalesce(p_par, '')), ''), 'classique'),
+    (trim(p_dance_titre),     nullif(trim(coalesce(p_dance_artiste, '')), ''),     nullif(trim(coalesce(p_par, '')), ''), 'dancefloor');
   return json_build_object('ok', true);
 end;
 $$;
-revoke all on function public.sf_proposer_son(text, text, text, text) from public;
-grant execute on function public.sf_proposer_son(text, text, text, text) to anon, authenticated;
+revoke all on function public.sf_proposer_duo(text, text, text, text, text, text) from public;
+grant execute on function public.sf_proposer_duo(text, text, text, text, text, text) to anon, authenticated;
 
 
 -- ============================================================

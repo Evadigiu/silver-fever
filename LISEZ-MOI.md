@@ -1,6 +1,6 @@
 # SILVER FEVER · Héléana's 30th Birthday
 
-Samedi 30 janvier 2027, 19 h · Bar Le Surnaturel, 6 rue Poincaré, Mulhouse.
+Samedi 30 janvier 2027, 19:30 · Expérience Park, Wittenheim.
 Réponses attendues avant le 13 décembre 2026.
 
 ## Ce que contient ce dépôt
@@ -82,12 +82,28 @@ nom remplace sa réponse précédente.
 **Guest list publique** (réglages) : nombre seul (par défaut), nombre +
 prénoms des invités qui ont coché l'accord, ou section masquée.
 
+**La photo de la boule** : quand on touche la boule disco, le site affiche le
+fichier `heleana.jpg` placé à côté d'`index.html`. Pour la mettre ou la
+changer : sur GitHub, dépôt `silver-fever` > **Add file** > **Upload files**,
+déposer la photo renommée exactement `heleana.jpg`, puis **Commit changes**.
+Tant que le fichier n'existe pas, le site affiche « La photo arrive très bientôt ».
+
+**Le quiz** : questions, réponses et commentaires sont dans `CONFIG.quiz` et
+`CONFIG.quizCommentaires`, en haut du script d'`index.html`. `bonne` est le
+numéro de la bonne réponse (0 = la première). Tant que `quizPret` vaut `false`,
+le site affiche « Version de travail » sous le quiz : passer à `true` une
+fois les vraies réponses saisies.
+
+**L'entrée avec les rideaux** s'affiche à chaque nouvelle visite. Dans un même
+onglet, un rechargement ne la remontre pas.
+
 **Connecter la playlist** : dans `index.html`, en haut du script, remplir
 `playlistUrl` avec le lien de partage de la playlist (Spotify, Deezer, Apple
 Music…). Le bouton « Écouter la playlist » apparaît alors ; pour un lien
 Spotify, un lecteur intégré s'ajoute aussi (il ne démarre jamais tout seul).
 Tant que le lien est vide, le site affiche « La playlist officielle arrive
-bientôt » et les invités peuvent proposer des morceaux.
+bientôt ». Chaque invité propose deux morceaux : un classique indispensable
+et celui qui met tout le monde d'accord sur le dancefloor.
 
 **Modifier un texte** : tous les textes sont dans `index.html`, lisibles en
 clair. Les dates, l'adresse de l'agenda et les liens sont regroupés en haut
