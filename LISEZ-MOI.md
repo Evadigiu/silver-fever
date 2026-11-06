@@ -84,14 +84,10 @@ nom remplace sa réponse précédente.
 **Guest list publique** (réglages) : nombre seul (par défaut), nombre +
 prénoms des invités qui ont coché l'accord, ou section masquée.
 
-**La photo de la boule** : quand on touche la boule disco, le site affiche le
-fichier `heleana.jpg` placé à côté d'`index.html`. Pour la mettre ou la
-changer : sur GitHub, dépôt `silver-fever` > **Add file** > **Upload files**,
-déposer la photo renommée exactement `heleana.jpg`, puis **Commit changes**.
-Tant que le fichier n'existe pas, le site affiche « La photo arrive très bientôt ».
-
-**La boule** est le visage d'Héléana bébé (`heleana-boule.jpg`, image carrée
-centrée sur le visage) recouvert de facettes. Pour la changer, remplacer ce
+**La boule** : à l'arrivée, c'est une boule à facettes argentée qui tourne.
+Quand on la touche, elle devient le visage d'Héléana bébé (`heleana-boule.jpg`,
+image carrée centrée sur le visage) recouvert de facettes ; un second toucher
+la ramène à la boule classique. Pour la changer, remplacer ce
 fichier par une autre image carrée portant le même nom.
 
 **Le quiz** : questions, réponses et commentaires sont dans `CONFIG.quiz` et

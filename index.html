@@ -268,16 +268,6 @@ h1.heleana { margin: 0; font-family: var(--f-titre); font-weight: 700; font-size
   .site-ouvert .hero .apparition:nth-child(7) { animation-delay: .85s; }
 }
 
-/* Photo cachée derrière la boule */
-.photo-modale { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: calc(env(safe-area-inset-top, 0px) + 1.5rem) var(--gd) calc(env(safe-area-inset-bottom, 0px) + 1.5rem) var(--g); background: rgba(0,0,0,.92); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); opacity: 0; transition: opacity .5s ease; }
-.photo-modale.visible { opacity: 1; }
-.photo-modale figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; transform: scale(.94); transition: transform .7s cubic-bezier(.2,.8,.2,1); }
-.photo-modale.visible figure { transform: none; }
-.cadre { padding: 8px; background: var(--metal-v); box-shadow: 0 30px 80px rgba(0,0,0,.8); }
-.cadre img { display: block; max-width: min(84vw, 30rem); max-height: 70svh; width: auto; height: auto; border: 1px solid #000; }
-.cadre .sans-photo { width: min(78vw, 22rem); aspect-ratio: 4 / 5; display: grid; place-items: center; text-align: center; padding: 2rem; background: #0b0b0b; color: var(--gris); font-size: .9rem; border: 1px solid #000; }
-.photo-modale figcaption { font-size: .66rem; letter-spacing: .34em; text-transform: uppercase; color: var(--gris); }
-
 /* ---------- Sections ---------- */
 section.bloc { position: relative; padding-block: 7rem 1rem; overflow-x: clip; }
 section.bloc > .wrap { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.8rem; }
@@ -509,7 +499,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section class="hero" id="accueil" aria-labelledby="t-accueil">
     <div class="spots" aria-hidden="true"><span></span><span></span></div>
     <div class="wrap au-dessus">
-      <button class="boule-btn apparition" type="button" id="boule-btn" aria-label="La boule à facettes au visage d'Héléana bébé : touche-la pour voir la photo">
+      <button class="boule-btn apparition" type="button" id="boule-btn" aria-label="Touche la boule à facettes" aria-pressed="false">
         <span class="fil" aria-hidden="true"></span>
         <svg class="anneau" viewBox="0 0 200 200" aria-hidden="true">
           <defs><path id="cercle" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
@@ -536,14 +526,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
     </div>
   </section>
-
-  <div class="photo-modale" id="photo-modale" role="dialog" aria-modal="true" aria-label="Photo d'Héléana" hidden>
-    <figure>
-      <div class="cadre" id="cadre"></div>
-      <figcaption>Héléana · avant les paillettes</figcaption>
-      <button class="btn btn-trait" type="button" id="fermer-photo">Fermer</button>
-    </figure>
-  </div>
 
   <!-- ============ INVITATION ============ -->
   <section class="bloc invitation" id="invitation" aria-labelledby="t-invitation">
@@ -580,7 +562,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
       <div class="adultes rv">
         <span class="val metal">Adults only</span>
-        <span class="txt">Ce soir-là, les seuls biberons autorisés sont au bar.</span>
+        <span class="txt">Ce soir-là, vos enfants dorment chez Mamie.</span>
       </div>
       <div class="boutons-infos rv">
         <a class="btn btn-plein" href="https://www.google.com/maps/search/?api=1&amp;query=Exp%C3%A9rience%20Park%20Wittenheim" target="_blank" rel="noopener">Itinéraire</a>
@@ -808,8 +790,7 @@ const CONFIG = {
   // Lien de la playlist (Spotify, Deezer, Apple Music…). Vide = « bientôt disponible ».
   playlistUrl: "",
 
-  // La photo qui apparaît quand on touche la boule, et le visage qui sert de boule.
-  photo: "heleana.jpg",
+  // Le visage qui apparaît sur la boule quand on la touche.
   photoBoule: "heleana-boule.jpg",
 
   // Dates, heure de Paris (UTC+1 en hiver)
@@ -934,7 +915,6 @@ menu.addEventListener("click", (e) => { if (e.target.closest("a")) basculerMenu(
 document.addEventListener("keydown", (e) => {
   if (e.key !== "Escape") return;
   if (menu.classList.contains("ouvert")) { basculerMenu(false); burger.focus(); }
-  if (!$("photo-modale").hidden) fermerPhoto();
 });
 
 /* ---------- Apparitions progressives au défilement ---------- */
@@ -992,29 +972,6 @@ $("cal-ics").addEventListener("click", () => {
   const a = document.createElement("a"); a.href = url; a.download = "silver-fever.ics";
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1500);
 });
-
-/* ---------- La boule : touche-la pour voir la photo ---------- */
-const modale = $("photo-modale");
-function ouvrirPhoto() {
-  const cadre = $("cadre");
-  if (!cadre.firstChild) {
-    const img = new Image();
-    img.alt = "Héléana bébé";
-    img.onerror = () => { cadre.innerHTML = '<div class="sans-photo">La photo arrive très bientôt.</div>'; };
-    img.src = CONFIG.photo;
-    cadre.append(img);
-  }
-  modale.hidden = false;
-  requestAnimationFrame(() => requestAnimationFrame(() => modale.classList.add("visible")));
-  $("fermer-photo").focus({ preventScroll: true });
-}
-function fermerPhoto() {
-  modale.classList.remove("visible");
-  setTimeout(() => { modale.hidden = true; $("boule-btn").focus({ preventScroll: true }); }, reduit ? 0 : 450);
-}
-$("boule-btn").addEventListener("click", ouvrirPhoto);
-$("fermer-photo").addEventListener("click", fermerPhoto);
-modale.addEventListener("click", (e) => { if (e.target === modale) fermerPhoto(); });
 
 /* ---------- RSVP ---------- */
 const form = $("form-rsvp"), msgRsvp = $("msg-rsvp"), btnRsvp = $("btn-rsvp");
@@ -1304,10 +1261,18 @@ chargerPublic();
    (Un tour complet montrerait l'arrière d'une tête qui n'existe pas sur la photo.) */
 (function boule() {
   const cv = $("boule"), ctx = cv.getContext("2d");
-  let L, R, cx, cy, visible = true, raf = null, visage = null;
+  let L, R, cx, cy, visible = true, raf = null, visage = null, montrerVisage = false, bascule = -1e9;
   const img = new Image();
   img.onload = () => { visage = img; if (reduit || !raf) dessiner(performance.now()); };
   img.src = CONFIG.photoBoule;
+  const btn = $("boule-btn");
+  btn.addEventListener("click", () => {
+    montrerVisage = !montrerVisage;
+    bascule = performance.now();
+    btn.setAttribute("aria-pressed", String(montrerVisage));
+    btn.setAttribute("aria-label", montrerVisage ? "Le visage d'Héléana bébé tourne sur la boule. Touche encore pour revenir à la boule à facettes" : "Touche la boule à facettes");
+    if (reduit || !raf) dessiner(performance.now());
+  });
 
   function dimension() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
@@ -1337,13 +1302,14 @@ chargerPublic();
 
   function dessiner(t) {
     ctx.clearRect(0, 0, L, L);
+    const avecVisage = visage && montrerVisage;
     const rot = reduit ? 0 : 0.5 * Math.sin(t * 0.0007);
     const spin = reduit ? 0.6 : t * 0.00018;     // sans photo : la boule argentée tourne en continu
     ctx.save();
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.clip();
     ctx.fillStyle = "#151515"; ctx.fillRect(cx - R, cy - R, 2 * R, 2 * R);
-    if (visage) photoSurSphere(rot);
-    const angle = visage ? rot : spin;
+    if (avecVisage) photoSurSphere(rot);
+    const angle = avecVisage ? rot : spin;
     const etoiles = [];
     ctx.lineWidth = Math.max(.6, R / 140);
     ctx.strokeStyle = "rgba(0,0,0,.38)";
@@ -1354,9 +1320,9 @@ chargerPublic();
       const p1 = pt(f.lat0, f.lon0 + angle), p2 = pt(f.lat0, f.lon1 + angle), p3 = pt(f.lat1, f.lon1 + angle), p4 = pt(f.lat1, f.lon0 + angle);
       const nx = Math.cos(latM) * Math.sin(lonM), ny = Math.sin(latM);
       const lum = Math.max(0, -0.35 * nx + 0.5 * ny + 0.8 * z);
-      const sc = reduit ? 0 : Math.pow(Math.max(0, Math.sin(t * 0.0026 + f.phase)), 60);
+      const sc = reduit ? 0 : Math.pow(Math.max(0, Math.sin(t * 0.0026 + f.phase)), avecVisage ? 60 : 40);
       ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.lineTo(p3[0], p3[1]); ctx.lineTo(p4[0], p4[1]); ctx.closePath();
-      if (visage) {
+      if (avecVisage) {
         // reflet de miroir sur chaque facette, plus fort côté lumière
         const a = Math.min(.85, 0.03 + Math.max(0, lum - 0.55) * 0.35 + sc * 0.8);
         ctx.fillStyle = "rgba(255,255,255," + a.toFixed(3) + ")"; ctx.fill();
@@ -1365,11 +1331,14 @@ chargerPublic();
         ctx.fillStyle = "rgb(" + v + "," + v + "," + v + ")"; ctx.fill();
       }
       ctx.stroke();
-      if (sc > 0.9 && etoiles.length < 7) etoiles.push([(p1[0] + p3[0]) / 2, (p1[1] + p3[1]) / 2, sc]);
+      if (sc > (avecVisage ? 0.9 : 0.6) && etoiles.length < (avecVisage ? 7 : 14)) etoiles.push([(p1[0] + p3[0]) / 2, (p1[1] + p3[1]) / 2, sc]);
     }
     const o = ctx.createRadialGradient(cx - R * .3, cy - R * .35, R * .35, cx, cy, R);
     o.addColorStop(0, "rgba(7,7,7,0)"); o.addColorStop(.8, "rgba(7,7,7,.15)"); o.addColorStop(1, "rgba(7,7,7,.6)");
     ctx.fillStyle = o; ctx.fillRect(cx - R, cy - R, 2 * R, 2 * R);
+    // éclair blanc au moment où la boule change de visage
+    const eclair = Math.max(0, 1 - (t - bascule) / 450);
+    if (eclair > 0 && !reduit) { ctx.fillStyle = "rgba(255,255,255," + (eclair * .85).toFixed(3) + ")"; ctx.fillRect(cx - R, cy - R, 2 * R, 2 * R); }
     ctx.restore();
     for (const [x, y, a] of etoiles) {
       const l = R * 0.15 * a;
