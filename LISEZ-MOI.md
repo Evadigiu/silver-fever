@@ -10,6 +10,8 @@ Réponses attendues avant le 13 décembre 2026.
 | `index.html` | Le site des invités (tout en un seul fichier) |
 | `admin.html` | L'espace privé d'Héléana : réponses, liste des invités, réglages |
 | `silver-fever.sql` | La base de données à installer dans Supabase |
+| `heleana-boule.jpg` | Le visage rond qui sert de boule à facettes |
+| `polices/` | La police du site (TeX Gyre Adventor, licence GUST), utilisée quand l'appareil n'a pas Century Gothic |
 | `og.jpg` | L'image d'aperçu affichée quand on partage le lien (WhatsApp, SMS…) |
 | `robots.txt` | Demande aux moteurs de recherche de ne pas référencer le site |
 
@@ -88,11 +90,13 @@ changer : sur GitHub, dépôt `silver-fever` > **Add file** > **Upload files**,
 déposer la photo renommée exactement `heleana.jpg`, puis **Commit changes**.
 Tant que le fichier n'existe pas, le site affiche « La photo arrive très bientôt ».
 
+**La boule** est le visage d'Héléana bébé (`heleana-boule.jpg`, image carrée
+centrée sur le visage) recouvert de facettes. Pour la changer, remplacer ce
+fichier par une autre image carrée portant le même nom.
+
 **Le quiz** : questions, réponses et commentaires sont dans `CONFIG.quiz` et
 `CONFIG.quizCommentaires`, en haut du script d'`index.html`. `bonne` est le
-numéro de la bonne réponse (0 = la première). Tant que `quizPret` vaut `false`,
-le site affiche « Version de travail » sous le quiz : passer à `true` une
-fois les vraies réponses saisies.
+numéro de la bonne réponse (0 = la première).
 
 **L'entrée avec les rideaux** s'affiche à chaque nouvelle visite. Dans un même
 onglet, un rechargement ne la remontre pas.
