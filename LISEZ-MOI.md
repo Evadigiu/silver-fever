@@ -12,6 +12,7 @@ Réponses attendues avant le 13 décembre 2026.
 | `silver-fever.sql` | La base de données à installer dans Supabase |
 | `heleana-boule.jpg` | Le visage rond qui sert de boule à facettes |
 | `polices/` | La police du site (TeX Gyre Adventor, licence GUST), utilisée quand l'appareil n'a pas Century Gothic |
+| `musique.mp3` | La musique de fond, lancée à l'ouverture des rideaux |
 | `og.jpg` | L'image d'aperçu affichée quand on partage le lien (WhatsApp, SMS…) |
 | `robots.txt` | Demande aux moteurs de recherche de ne pas référencer le site |
 
@@ -89,6 +90,15 @@ Quand on la touche, elle devient le visage d'Héléana bébé (`heleana-boule.jp
 image carrée centrée sur le visage) recouvert de facettes ; un second toucher
 la ramène à la boule classique. Pour la changer, remplacer ce
 fichier par une autre image carrée portant le même nom.
+
+**La musique de fond** (`musique.mp3`) démarre en fondu quand l'invité
+clique sur « Enter the fever » : les navigateurs interdisent le son sans geste
+de sa part. Le bouton rond en haut (petit égaliseur) la coupe ou la relance ;
+si un invité la coupe, elle ne redémarre pas à sa visite suivante. Elle se met
+en pause quand on change d'onglet ou d'application. Pour changer de morceau,
+remplacer le fichier en gardant le nom `musique.mp3` ; pour la retirer, mettre
+`musique: ""` dans `CONFIG`. Utiliser de préférence un morceau libre de droits :
+le dépôt est public.
 
 **Le quiz** : questions, réponses et commentaires sont dans `CONFIG.quiz` et
 `CONFIG.quizCommentaires`, en haut du script d'`index.html`. `bonne` est le

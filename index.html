@@ -202,6 +202,25 @@ p { margin: 0; }
 .burger[aria-expanded="true"] span { background: transparent; }
 .burger[aria-expanded="true"] span::before { transform: translateY(5px) rotate(45deg); }
 .burger[aria-expanded="true"] span::after { transform: translateY(-5px) rotate(-45deg); }
+.son { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; background: transparent; border: 1px solid var(--filet-fort); border-radius: 50%; cursor: pointer; position: relative; }
+.son span { width: 2px; height: 12px; background: currentColor; transform-origin: 50% 100%; transform: scaleY(.35); transition: transform .3s ease; }
+.son[aria-pressed="true"] span { transform: scaleY(1); }
+.son[aria-pressed="false"]::after { content: ""; position: absolute; width: 22px; height: 1px; background: currentColor; transform: rotate(-45deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .son[aria-pressed="true"] span { animation: egaliseur .9s ease-in-out infinite alternate; }
+  .son[aria-pressed="true"] span:nth-child(2) { animation-delay: -.3s; }
+  .son[aria-pressed="true"] span:nth-child(3) { animation-delay: -.6s; }
+  .son[aria-pressed="true"] span:nth-child(4) { animation-delay: -.15s; }
+}
+@keyframes egaliseur { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+.logo { white-space: nowrap; }
+@media (max-width: 24rem) {
+  .nav .wrap { gap: .5rem; }
+  .logo { font-size: .8rem; letter-spacing: .1em; }
+  .nav-droite { gap: .4rem; }
+  .nav .btn { padding: .5rem .75rem; letter-spacing: .18em; }
+  .son, .burger { width: 40px; height: 40px; }
+}
 .menu { position: fixed; inset: 0; z-index: 45; background: rgba(7,7,7,.97);
   padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 2rem) var(--gd) calc(2rem + env(safe-area-inset-bottom, 0px)) var(--g);
   display: flex; flex-direction: column; justify-content: space-between; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
@@ -475,6 +494,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <a href="#quiz">Quiz</a>
     </nav>
     <div class="nav-droite">
+      <button class="son" id="son" type="button" aria-pressed="false" aria-label="Activer la musique" hidden><span></span><span></span><span></span><span></span></button>
       <a class="btn btn-trait" href="#rsvp">RSVP</a>
       <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span></button>
     </div>
@@ -774,6 +794,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 </footer>
 
 <canvas id="pluie" aria-hidden="true" hidden></canvas>
+<audio id="musique" src="musique.mp3" loop preload="none"></audio>
 
 <script>
 /* =================================================================
@@ -786,6 +807,10 @@ const CONFIG = {
 
   // Mail de notification à chaque réponse (Formspree). "" pour ne plus en recevoir.
   formspreeId: "xwllberr",
+
+  // Musique de fond : démarre au clic sur « Enter the fever ». "" pour la retirer.
+  musique: "musique.mp3",
+  volumeMusique: 0.55,
 
   // Lien de la playlist (Spotify, Deezer, Apple Music…). Vide = « bientôt disponible ».
   playlistUrl: "",
@@ -875,6 +900,48 @@ let code = null;
 })();
 let donnees = null;
 
+/* ---------- Musique de fond ----------
+   Les navigateurs interdisent le son sans geste de l'invité : elle démarre
+   donc au clic sur « Enter the fever », en fondu. Le bouton en haut la coupe,
+   et ce choix est retenu. Elle se met en pause quand on quitte l'onglet. */
+const musique = (function () {
+  const audio = $("musique"), btn = $("son");
+  if (!CONFIG.musique) { audio.remove(); return { lancer() {} }; }
+  audio.src = CONFIG.musique;
+  btn.hidden = false;
+  let voulue = false, fondu = null;
+  function etat(actif) {
+    btn.setAttribute("aria-pressed", String(actif));
+    btn.setAttribute("aria-label", actif ? "Couper la musique" : "Activer la musique");
+  }
+  function monter() {
+    clearInterval(fondu);
+    try { audio.volume = 0; } catch (e) {}
+    const cible = CONFIG.volumeMusique, t0 = performance.now();
+    fondu = setInterval(() => {
+      const k = Math.min(1, (performance.now() - t0) / 2500);
+      try { audio.volume = cible * k; } catch (e) {}
+      if (k >= 1) clearInterval(fondu);
+    }, 60);
+  }
+  function jouer() {
+    voulue = true;
+    const p = audio.play();
+    if (p && p.then) p.then(() => { etat(true); monter(); }).catch(() => { voulue = false; etat(false); });
+    else { etat(true); monter(); }
+  }
+  function couper() { voulue = false; clearInterval(fondu); audio.pause(); etat(false); }
+  btn.addEventListener("click", () => {
+    if (audio.paused) { ecrire("sf-son", true); jouer(); } else { ecrire("sf-son", false); couper(); }
+  });
+  audio.addEventListener("error", () => { btn.hidden = true; });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) { if (!audio.paused) audio.pause(); }
+    else if (voulue) audio.play().catch(() => {});
+  });
+  return { lancer() { if (lire("sf-son") !== false) jouer(); } };   // sauf si l'invité l'a coupée une fois
+})();
+
 /* ---------- Entrée VIP ---------- */
 const vip = $("vip");
 function ouvrirSite() {
@@ -889,6 +956,7 @@ function ouvrirSite() {
   $("entrer").focus({ preventScroll: true });
   $("entrer").addEventListener("click", () => {
     try { sessionStorage.setItem("sf-entre", "1"); } catch (e) {}
+    musique.lancer();
     vip.classList.add("ouvre");
     if (reduit) { setTimeout(() => { vip.classList.add("fini"); ouvrirSite(); }, 400); return; }
     setTimeout(() => ouvrirSite(), 900);
