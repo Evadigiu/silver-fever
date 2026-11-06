@@ -166,7 +166,20 @@ p { margin: 0; }
 .vip-titre { margin: 0; font-family: var(--f-titre); font-weight: 700; font-size: clamp(2.2rem, 11vw, 4.2rem); line-height: 1; letter-spacing: .06em; text-transform: uppercase; filter: drop-shadow(0 4px 18px rgba(0,0,0,.9)); }
 .vip-sous { font-size: clamp(.78rem, 3.4vw, .95rem); letter-spacing: .34em; text-transform: uppercase; color: var(--blanc); padding-left: .34em; text-shadow: 0 2px 10px #000; }
 .vip-mention { font-size: .62rem; letter-spacing: .34em; text-transform: uppercase; color: #cfcfcf; padding-left: .34em; text-shadow: 0 2px 10px #000; }
-.vip .btn { margin-top: 1rem; background: rgba(0,0,0,.55); border-color: rgba(255,255,255,.7); color: var(--blanc); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.vip-code { display: flex; flex-direction: column; align-items: center; gap: .9rem; width: min(100%, 18rem); margin-top: 1rem; }
+.vip-code input {
+  width: 100%; min-height: 50px; text-align: center;
+  font: 400 1rem/1 var(--f-texte); letter-spacing: .3em; text-transform: uppercase;
+  color: var(--blanc); background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.45); border-radius: 0;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.vip-code input::placeholder { color: #9a9a9a; letter-spacing: .2em; text-transform: none; }
+.vip-code input:focus { outline: none; border-color: var(--blanc); }
+.vip-code .btn { width: 100%; }
+.vip-erreur { font-size: .82rem; letter-spacing: .06em; color: var(--blanc); text-shadow: 0 2px 10px #000; margin: 0; }
+@media (prefers-reduced-motion: no-preference) { .vip-texte > .vip-code.non { opacity: 1; animation: secoue .45s ease; } }
+@keyframes secoue { 0%, 100% { transform: none; } 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+.vip .btn { margin-top: 0; background: rgba(0,0,0,.55); border-color: rgba(255,255,255,.7); color: var(--blanc); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
 .vip .btn:hover { border-color: var(--blanc); box-shadow: 0 0 26px rgba(255,255,255,.25); }
 @media (prefers-reduced-motion: no-preference) {
   .vip-texte > * { opacity: 0; transform: translateY(12px); animation: monte 1s cubic-bezier(.2,.8,.2,1) forwards; }
@@ -476,7 +489,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="vip-titre metal" id="vip-titre">Silver Fever</p>
       <p class="vip-sous">Héléana's 30th birthday</p>
       <p class="vip-mention">Private party — Guest access only</p>
-      <button class="btn" type="button" id="entrer">Enter the fever</button>
+      <form class="vip-code" id="vip-form" novalidate>
+        <label for="vip-saisie" class="sr-only">Code d'invitation</label>
+        <input type="text" id="vip-saisie" maxlength="40" placeholder="Code d'invitation" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="go">
+        <button class="btn" type="submit" id="entrer">Enter the fever</button>
+        <p class="vip-erreur" id="vip-erreur" role="alert" hidden></p>
+      </form>
     </div>
   </div>
 </div>
@@ -939,7 +957,14 @@ const musique = (function () {
     if (document.hidden) { if (!audio.paused) audio.pause(); }
     else if (voulue) audio.play().catch(() => {});
   });
-  return { lancer() { if (lire("sf-son") !== false) jouer(); } };   // sauf si l'invité l'a coupée une fois
+  return {
+    // Appelé au clic : démarre en silence, pour que le navigateur l'autorise
+    preparer() { if (lire("sf-son") === false) return; audio.muted = true; const p = audio.play(); if (p && p.catch) p.catch(() => {}); },
+    // Une fois le code accepté : on rend le son, en fondu (sauf si l'invité l'a coupée une fois)
+    lancer() { if (lire("sf-son") === false) { audio.pause(); return; } audio.muted = false; jouer(); },
+    // Code refusé : on arrête
+    annuler() { audio.pause(); audio.muted = false; }
+  };
 })();
 
 /* ---------- Entrée VIP ---------- */
@@ -952,9 +977,12 @@ function ouvrirSite() {
 (function entree() {
   let dejaVu = false;
   try { dejaVu = sessionStorage.getItem("sf-entre") === "1"; } catch (e) {}
-  if (dejaVu) { vip.classList.add("fini"); ouvrirSite(); return; }
-  $("entrer").focus({ preventScroll: true });
-  $("entrer").addEventListener("click", () => {
+  if (dejaVu && code) { vip.classList.add("fini"); ouvrirSite(); return; }
+  const form = $("vip-form"), saisie = $("vip-saisie"), erreurVip = $("vip-erreur"), btn = $("entrer");
+  if (code) saisie.value = code;                  // un invité qui revient n'a rien à retaper
+  setTimeout(() => saisie.focus({ preventScroll: true }), reduit ? 0 : 1300);
+
+  function ouvrir() {
     try { sessionStorage.setItem("sf-entre", "1"); } catch (e) {}
     musique.lancer();
     vip.classList.add("ouvre");
@@ -962,6 +990,32 @@ function ouvrirSite() {
     setTimeout(() => ouvrirSite(), 900);
     setTimeout(() => vip.classList.add("entre"), 1500);
     setTimeout(() => vip.classList.add("fini"), 2600);
+  }
+  function refuser(texte) {
+    musique.annuler();
+    erreurVip.textContent = texte; erreurVip.hidden = false;
+    form.classList.remove("non"); void form.offsetWidth; form.classList.add("non");
+    saisie.select();
+  }
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const essai = saisie.value.trim();
+    if (!essai) { refuser("Entre le code reçu avec ton invitation."); return; }
+    musique.preparer();
+    btn.disabled = true; erreurVip.hidden = true;
+    let ok = true;
+    try {
+      const r = await rpc("sf_public", { p_code: essai });
+      ok = !!(r && r.code_ok);
+    } catch (err) {
+      ok = true;   // base injoignable : on laisse entrer, les réponses vérifieront le code plus tard
+    }
+    btn.disabled = false;
+    if (!ok) { refuser("Ce n'est pas le bon code. Il figure dans ton invitation."); return; }
+    code = essai; ecrire("sf-code", code);
+    $("bloc-code").hidden = true;
+    chargerPublic();
+    ouvrir();
   });
 })();
 

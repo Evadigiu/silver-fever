@@ -172,12 +172,12 @@ code { font-family: var(--f-cond); font-size: .85em; background: var(--graphite-
         <div class="champ">
           <label for="g-code">Code d'invitation</label>
           <input type="text" id="g-code" maxlength="40" autocomplete="off" spellcheck="false">
-          <span class="aide">Si tu le changes, les liens déjà envoyés ne fonctionneront plus pour répondre.</span>
+          <span class="aide">Les invités le tapent sur le rideau pour entrer. Si tu le changes après l'envoi des invitations, préviens-les.</span>
         </div>
         <p class="message" id="msg-reglages" role="status" hidden></p>
         <button class="btn btn-plein" type="button" id="btn-reglages">Enregistrer</button>
         <div class="champ">
-          <label for="lien">Lien à envoyer aux invités</label>
+          <label for="lien">Message à envoyer aux invités</label>
           <div class="lien-partage">
             <input type="text" id="lien" readonly>
             <button class="btn btn-petit" type="button" id="copier">Copier</button>
@@ -290,7 +290,7 @@ function afficherTout() {
   if (reglages) {
     document.querySelectorAll('input[name="mode"]').forEach((r) => r.checked = r.value === reglages.guest_list_mode);
     $("g-code").value = reglages.code_invitation;
-    $("lien").value = SITE_URL + "?invite=" + encodeURIComponent(reglages.code_invitation);
+    $("lien").value = SITE_URL + "  ·  code : " + reglages.code_invitation;
   }
 }
 

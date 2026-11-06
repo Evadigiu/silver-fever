@@ -49,19 +49,24 @@ Le site est en ligne en une à deux minutes sur
 `https://evadigiu.github.io/silver-fever/`.
 
 ### 4. Changer le code d'invitation (important)
-Le code de départ, `SILVER30`, est écrit dans `silver-fever.sql`, qui est
-visible publiquement sur GitHub. Avant d'envoyer le lien :
-ouvrir `https://evadigiu.github.io/silver-fever/admin.html`, se connecter,
-**Réglages du site** > Code d'invitation > en choisir un nouveau
-(ex. `DISCO-HEL-7Q`) > **Enregistrer**.
+Les invités tapent ce code sur l'écran des rideaux pour entrer. Le code de
+départ, `SILVER30`, est écrit dans `silver-fever.sql`, qui est visible
+publiquement sur GitHub : le remplacer (choisi : `MIMI30`), au choix
+- dans `admin.html` > **Réglages du site** > Code d'invitation > **Enregistrer** ;
+- ou dans Supabase > SQL Editor :
+  `update public.sf_reglages set code_invitation = 'MIMI30' where id = 1;`
+
+Majuscules et minuscules sont acceptées. Ne plus le changer une fois les
+invitations envoyées.
 
 ### 5. Ajouter la liste des invités
 Dans `admin.html` > **Ajouter des invités** : un invité par ligne, prénom puis
 nom. C'est ce qui permet de voir **qui n'a pas encore répondu**.
 
 ### 6. Tester, puis envoyer
-Copier le **lien à envoyer aux invités** (dans les réglages). Il contient le
-code : les invités n'ont rien à taper. Faire une réponse de test depuis un
+Envoyer aux invités l'adresse `https://evadigiu.github.io/silver-fever/` et
+le code. Un invité qui revient n'a pas à retaper le code. (Une adresse
+terminée par `?invite=MIMI30` pré-remplit le code, si besoin.) Faire une réponse de test depuis un
 téléphone, vérifier qu'elle apparaît dans `admin.html` et que le mail arrive,
 puis la supprimer.
 
@@ -131,12 +136,14 @@ bien enregistrées dans Supabase.
 
 - Protégé : les réponses, e-mails, allergies et petits mots ne sont lisibles
   que depuis `admin.html` par un compte déclaré dans `sf_admins`.
-- Protégé : sans le bon code, personne ne peut répondre, proposer un son ni
-  voir la guest list. Le code bloque aussi les robots.
-- **Pas protégé** : les textes du site (date, lieu, adresse) sont visibles par
-  toute personne qui a le lien, comme sur un carton d'invitation. GitHub
-  Pages ne permet pas de mettre un mot de passe sur la page elle-même. Le
-  site demande aux moteurs de recherche de ne pas le référencer.
+- Protégé : sans le bon code, personne ne passe les rideaux, ne peut répondre,
+  proposer un son ni voir la guest list. Le code bloque aussi les robots.
+- **Protection légère** : le code tapé sur les rideaux cache l'invitation aux
+  curieux, mais les textes (date, lieu) restent lisibles dans le code source
+  de la page par quelqu'un de très technique. GitHub Pages ne permet pas de
+  vraie protection par mot de passe. Si la base est injoignable, le rideau
+  s'ouvre quand même, pour ne bloquer personne. Le site demande aux moteurs
+  de recherche de ne pas le référencer.
 - Une personne qui connaît le code et le nom exact d'un invité pourrait
   modifier sa réponse. Dans un cercle de proches, le risque est faible.
 
