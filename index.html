@@ -329,6 +329,7 @@ section.bloc > .wrap { position: relative; z-index: 1; display: flex; flex-direc
 .info .lab { font-size: .64rem; letter-spacing: .32em; text-transform: uppercase; color: var(--gris-2); }
 .info .val { font-family: var(--f-titre); font-weight: 700; font-size: clamp(1.45rem, 6vw, 2rem); line-height: 1.12; color: var(--blanc); overflow-wrap: anywhere; }
 .info .txt { color: var(--gris); max-width: 34rem; }
+.dress-texte { display: flex; flex-direction: column; gap: .7rem; }
 @media (min-width: 48rem) {
   .infos-grille { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 2.4rem; }
   .info:not(.demi) { grid-column: auto; }
@@ -595,7 +596,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div class="info large rv">
           <span class="lab">Dress code</span>
           <span class="val metal">Silver Fever</span>
-          <span class="txt">C'est le thème de la soirée, et on compte sur toi pour briller ! Sors l'argent, le chrome, les paillettes et tout ce qui attrape la lumière : une veste métallisée, un bijou XXL, des boots argentées… Du clin d'œil au total look, tout est permis, tant que ça scintille.</span>
+          <div class="txt dress-texte">
+            <p>Pour cette soirée, le noir laisse exceptionnellement sa place à l’argenté&nbsp;!</p>
+            <p>Paillettes, sequins, chrome, reflets métallisés… L’idée est simple&nbsp;: jouer le jeu et sortir vos plus belles pièces argentées.</p>
+            <p>Robe scintillante, chemise métallisée, pantalon silver, accessoires brillants… À vous de voir comment vous approprier le thème.</p>
+            <p>Pas besoin d’en faire trop, mais une chose est sûre&nbsp;: ce soir, on veut que ça brille&nbsp;!</p>
+          </div>
         </div>
       </div>
       <div class="adultes rv">
@@ -860,8 +866,8 @@ const CONFIG = {
     "Tu viens pour le buffet ?",                         // 1
     "Personne n'est parfait.",                           // 2
     "Pas mal.",                                          // 3
-    "Presque de la famille. Héléana te garde un verre.", // 4 (proposition)
-    "Âme sœur certifiée. Premier rang sur la piste."     // 5 (proposition)
+    "Pas loin du sans-faute, personne !",                // 4
+    "Bravo mon cul !"                                    // 5
   ]
 };
 
